@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+button, .logo, .ul-links li{
+    cursor: pointer;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    width: 64%;
+    margin: auto;
+}
+
+form .form-group
+{
+    margin: 5px 0;
+}
+
+.required-field-label{
+    color: red;
+}

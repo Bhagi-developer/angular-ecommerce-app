@@ -1,0 +1,46 @@
+.navbar
+{
+    display: flex;
+    justify-content: space-around;
+}
+
+.navbar div{
+    flex: 1;
+}
+
+.navbar .nav-logo
+{
+    text-align: center;
+}
+
+.navbar .nav-logo h1
+{
+    display: inline;
+}
+.navbar .nav-list
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar a
+{
+    color: black;
+    text-decoration: none;
+}
+
+.navbar ul{
+    margin: 0 25%;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    flex:1;
+}
+
+.navbar .nav-search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

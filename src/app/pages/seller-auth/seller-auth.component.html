@@ -1,0 +1,72 @@
+<div class="seller-auth-main-container">
+  <div class="seller-auth-instruct-container">
+    <h1 class="seller-form-heading">Sign Up</h1>
+    <img src="../../../assets/imgs/images-removebg-preview.png" alt="seller" />
+  </div>
+
+  <div class="seller-auth-form-container">
+    <form #sellerSignUp="ngForm" (ngSubmit)="onSubmit(sellerSignUp)">
+      <div class="form-group">
+        <label for="FName"
+          >First Name<span class="required-field-label">*</span>:</label
+        >
+        <input
+          type="text"
+          id="FName"
+          class="form-control"
+          required
+          ngModel
+          name="FName"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="LName"
+          >Last Name<span class="required-field-label">*</span>:</label
+        >
+        <input
+          type="text"
+          id="LName"
+          class="form-control"
+          required
+          ngModel
+          name="LName"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="Email"
+          >Email<span class="required-field-label">*</span>:</label
+        >
+        <input
+          type="email"
+          id="Email"
+          class="form-control"
+          required
+          ngModel
+          name="Email"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="Password"
+          >Password<span class="required-field-label">*</span>:</label
+        >
+        <input
+          type="password"
+          id="Password"
+          class="form-control"
+          required
+          ngModel
+          name="Password"
+        />
+      </div>
+
+      <div class="alert alert-danger" role="alert" *ngIf="invalidSubmission">
+        Please enter all required fields in proper format
+      </div>
+
+      <button class="btn btn-primary">Sign Up</button>
+    </form>
+  </div>
+</div>

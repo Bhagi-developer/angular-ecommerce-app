@@ -1,0 +1,32 @@
+.seller-auth-main-container {
+  display: flex;
+  height: 70vh;
+  margin-top: 40px;
+}
+
+.seller-auth-instruct-container
+{
+  flex: 0.4;
+}
+
+.seller-auth-form-container
+{
+  flex: 0.6;
+}
+
+form{
+  width: 100%;
+  margin: 0 50px 0 0;
+}
+
+.seller-auth-main-container div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form label
+{
+  width: 100%;
+}
