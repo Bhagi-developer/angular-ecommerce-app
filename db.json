@@ -1,109 +1,13 @@
 {
   "seller": [
     {
-      "FName": "Tom",
-      "LName": "Holland",
-      "Email": "TomHolland@gmail.com",
-      "Password": "TomHolland@123",
-      "id": 1
-    },
-    {
-      "FName": "Tom",
-      "LName": "Hanks",
-      "Email": "TomHanks@gmail.com",
-      "Password": "TomHanks@123",
-      "id": 2
-    },
-    {
-      "FName": "Chris",
-      "LName": "Evans",
-      "Email": "ChrisEvans@gmail.com",
-      "Password": "ChrisEvans@123",
-      "id": 3
-    },
-    {
-      "FName": "Bhagirath",
-      "LName": "Makwana",
-      "Email": "bhagirathsinhmakwana2001@gmail.com",
-      "Password": "abc",
-      "id": 4
-    },
-    {
-      "FName": "Bhagirath",
-      "LName": "Makwana",
-      "Email": "bhagirathsinhmakwana2001@gmail.com",
-      "Password": "abcd",
-      "id": 5
-    },
-    {
-      "FName": "Bhagirath",
-      "LName": "Makwana",
-      "Email": "bhagirathsinhmakwana2001@gmail.com",
-      "Password": "abcde",
-      "id": 6
-    },
-    {
-      "FName": "Bhagirath",
-      "LName": "Makwana",
-      "Email": "bhagirathsinhmakwana2001@gmail.com",
-      "Password": "abcdef",
-      "id": 7
-    },
-    {
-      "FName": "Bhagirath",
-      "LName": "Makwana",
-      "Email": "bhagirathsinhmakwana2001@gmail.com",
-      "Password": "abcd",
-      "id": 8
-    },
-    {
-      "FName": "Bhagirath",
-      "LName": "Makwana",
-      "Email": "bhagirathsinhmakwana2001@gmail.com",
-      "Password": "abc",
-      "id": 9
-    },
-    {
-      "FName": "Bhagirath",
-      "LName": "Makwana",
-      "Email": "bhagirathsinhmakwana2001@gmail.com",
-      "Password": "abc",
-      "id": 10
-    },
-    {
-      "FName": "Bhagirath",
-      "LName": "Makwana",
-      "Email": "bhagirathsinhmakwana2001@gmail.com",
+      "FName": "a",
+      "LName": "b",
+      "StoreName": "abc",
+      "Email": "bhagirath@gmail.com",
       "Password": "a",
-      "id": 11
-    },
-    {
-      "FName": "Bhagirath",
-      "LName": "Makwana",
-      "Email": "bhagirathsinhmakwana2001@gmail.com",
-      "Password": "abcd",
-      "id": 12
-    },
-    {
-      "FName": "Bhagirath",
-      "LName": "Makwana",
-      "Email": "bhagirathsinhmakwana2001@gmail.com",
-      "Password": "abcd",
-      "id": 13
-    },
-    {
-      "FName": "Bhagirath",
-      "LName": "Makwana",
-      "Email": "bhagirathsinhmakwana2001@gmail.com",
-      "Password": "abcd",
-      "id": 14
-    },
-    {
-      "FName": "Bhagirath",
-      "LName": "Makwana",
-      "Email": "bhagirathsinhmakwana2001@gmail.com",
-      "Password": "abc",
-      "id": 15
+      "id": 1
     }
-  ]
+  ],
+  "products": []
 }

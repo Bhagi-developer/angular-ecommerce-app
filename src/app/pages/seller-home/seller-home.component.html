@@ -1,3 +1,12 @@
-<div class="alert alert-success" role="alert">
-  Welcome {{seller?.FName}}!
+<div class="seller-home-main-container">
+
+  <div class="alert alert-primary text-center" role="alert">
+    Welcome {{seller?.FName? seller?.FName : "seller"}}!
+  </div>
+  
+  <div class="store-product-list-container">
+    <h3>Products available in store</h3>
+
+    <!-- <div *ngFor="let item of list"></div> -->
+  </div>
 </div>

@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import {  HttpClientModule } from '@angular/common/http';
 import { SellerHomeComponent } from './pages/seller-home/seller-home.component';
 import { NoContentComponent } from './pages/no-content/no-content.component';
+import { SellerAddProductComponent } from './pages/seller-add-product/seller-add-product.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NoContentComponent } from './pages/no-content/no-content.component';
     HomeComponent,
     SellerAuthComponent,
     SellerHomeComponent,
-    NoContentComponent
+    NoContentComponent,
+    SellerAddProductComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,144 @@
+<div class="seller-add-product-main-container">
+  <div id="seller-add-product-instruct-container" class="seller-add-product-container">
+    <h1 class="seller-add-product-heading">Add Product</h1>
+    <br />
+    <img src="../../../assets/imgs/add-product.png" alt="seller" />
+  </div>
+
+  <div id="seller-add-product-form-container" class="seller-add-product-container">
+    <form #addProduct="ngForm" (ngSubmit)="onAddProdct(addProduct)">
+      <h3>{{seller?.StoreName}} Store</h3>
+      <div class="form-group">
+        <label for="Name"
+          >Name<span class="required-field-label">*</span></label
+        >
+        <input
+          type="text"
+          id="Name"
+          class="form-control"
+          required
+          ngModel
+          name="Name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="Price"
+          >Price($)<span class="required-field-label">*</span></label
+        >
+        <input
+          type="number"
+          id="Price"
+          class="form-control"
+          required
+          ngModel
+          name="Price"
+          maxlength="3"
+          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+        />
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label for="Category"
+            >Category<span class="required-field-label">*</span></label
+          >
+          <select
+            class="form-control"
+            id="Category"
+            required
+            ngModel
+            name="Category"
+          >
+            <option value="" disabled selected>Select Category</option>
+            <option value="Sports">Sports</option>
+            <option value="Home and Furniture">Home and Furniture</option>
+            <option value="Health and Beauty">Health and Beauty</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Toys and Games">Toys and Games</option>
+            <option value="Fashion">Fashion</option>
+            <option value="Books and Media">Books and Media</option>
+          </select>
+        </div>
+        <div class="col">
+          <label for="Quantity"
+            >Quantity<span class="required-field-label">*</span></label
+          >
+          <input
+            type="number"
+            id="Quantity"
+            class="form-control"
+            required
+            ngModel
+            name="Quantity"
+            maxlength="3"
+            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+          />
+        </div>
+      </div>
+
+      <div class="radio-input-main-container form-group">
+        <label>Payment-Method</label>
+        <div class="radio-input-container">
+          <input
+            type="radio"
+            id="Cash-payment"
+            name="Payment-method"
+            value="Cash"
+            [(ngModel)]="selectedPaymentMethod"
+          />
+          <label for="Cash-payment" style="font-weight: normal">Cash</label>
+        </div>
+
+        <div class="radio-input-container">
+          <input
+            type="radio"
+            id="Online-payment"
+            name="Payment-method"
+            value="Online"
+            [(ngModel)]="selectedPaymentMethod"
+          />
+          <label for="Online-payment" style="font-weight: normal">Online</label>
+        </div>
+
+        <div class="radio-input-container">
+          <input
+            type="radio"
+            id="Any-payment"
+            name="Payment-method"
+            value="Both"
+            [(ngModel)]="selectedPaymentMethod"
+          />
+          <label for="Any-payment" style="font-weight: normal">Both</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="List-product-check"
+            checked
+            [(ngModel)]="ListProductSelection"
+            name="List-product"
+          />
+          <label class="form-check-label" for="List-product-check">
+            List this product in store
+          </label>
+        </div>
+      </div>
+
+      <div class="alert alert-danger" role="alert" *ngIf="invalidSubmission">
+        Please enter all required fields in proper format!
+      </div>
+
+      <div class="alert alert-success" role="alert" *ngIf="addProductSuccess">
+        Product added successfully!
+      </div>
+
+      <button class="btn btn-primary btn-general-height">Add Product</button>
+
+    </form>
+  </div>
+</div>

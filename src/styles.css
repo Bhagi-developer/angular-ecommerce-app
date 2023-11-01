@@ -18,3 +18,19 @@ form .form-group
 .required-field-label{
     color: red;
 }
+
+.app-bg-color{
+background-color: #006a9c;
+}
+
+.app-text-color{
+color: #006a9c;
+}
+
+.btn-general-height{
+    height: 36px;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}

@@ -2,7 +2,8 @@ import { JsonPipe } from '@angular/common';
 import { Component,  OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { sellerDataType } from 'src/app/data-type';
+import { IsellerDataType } from 'src/app/data-type';
+import { IsellerLoginDataType } from 'src/app/data-type';
 import { SellerService } from 'src/app/services/seller.service';
 
 @Component({
@@ -14,6 +15,8 @@ export class SellerAuthComponent {
 
   emailPattern:RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   invalidSubmission:boolean= false;
+  loginPage:boolean= false;
+  wrongLoginCredentialSubmission:boolean= false;
 
   constructor(private sellerService:SellerService, private route:Router){}
 
@@ -24,9 +27,14 @@ export class SellerAuthComponent {
      }
   }
 
-  onSubmit(sellerSignUpForm:NgForm)
+  toggelLoginSignup(){
+    this.loginPage= !this.loginPage;
+  }
+
+  onSubmit(sellerFormData:NgForm)
   {
-    if(!sellerSignUpForm.valid || !this.emailPattern.test(sellerSignUpForm.value.Email))
+    //if fields are invalid
+    if(!sellerFormData.valid || !this.emailPattern.test(sellerFormData.value.Email))
     {
       this.invalidSubmission= true;
     }
@@ -34,17 +42,30 @@ export class SellerAuthComponent {
     {
       this.invalidSubmission= false;
      
-      this.sellerService.sellerSignUp(sellerSignUpForm.value).subscribe((res)=>{
-        if(res)
-        {
-          localStorage.setItem('seller', JSON.stringify(res));
-          SellerService.isSellerAuthenticated= true;
-          this.route.navigate(['/seller-home']);
-        }
-        else{
-          this.route.navigate(["/"]);
-        }
-      })
+      //handle login 
+      if(this.loginPage)
+      {
+        let res=this.sellerService.sellerLogIn(sellerFormData.value);
+        
+        this.sellerService.isloginError.subscribe((error)=>{
+          if(error)
+          {
+            this.wrongLoginCredentialSubmission= true;
+          }
+        })
+      }
+
+      //handle sign up
+      else
+      {
+        this.sellerService.sellerSignUp(sellerFormData.value).subscribe((res)=>{
+          if(res)
+          {
+            this.loginPage= true;
+            sellerFormData.reset();
+          }
+        })
+      }
   }
 }
 }

@@ -1,0 +1,49 @@
+.seller-add-product-main-container {
+  display: flex;
+  height: 70vh;
+  margin-top: 40px;
+}
+
+#seller-add-product-instruct-container {
+  flex: 0.4;
+}
+
+#seller-add-product-form-container {
+  flex: 0.6;
+}
+
+.seller-add-product-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  width: 90%;
+  margin: 0 20px 0 0;
+}
+
+form label
+{
+  width: 100%;
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+.radio-input-container{
+  display: flex;
+  flex-direction: row;
+}
+
+.radio-input-main-container{
+  margin: 10px 0;
+}
+
+.radio-input-container label{
+  margin: 0 0 0 10px;
+}
+
+.alert{
+  margin: 10px 0;
+}

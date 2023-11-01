@@ -4,29 +4,43 @@
   margin-top: 40px;
 }
 
-.seller-auth-instruct-container
+#seller-auth-instruct-container
 {
   flex: 0.4;
 }
 
-.seller-auth-form-container
+#seller-auth-form-container
 {
   flex: 0.6;
-}
+} 
 
-form{
-  width: 100%;
-  margin: 0 50px 0 0;
-}
-
-.seller-auth-main-container div {
+.seller-auth-container{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+img{
+  height: 250px;
+  width: 300px;
+}
+
+form{
+  width: 90%;
+  margin: 0 20px 0 0;
+} 
+
+.form-row{
+  display: flex;
+  justify-content: space-between;
+}
+
 form label
 {
   width: 100%;
+}
+
+.toggelLoginSignupLink{
+   cursor: pointer;
 }
