@@ -1,145 +1,159 @@
+<div class="navigate-seller-home-btn-container">
+  <button type="button" class="btn btn-dark" routerLink="/seller-home">
+    ˂ Seller Home
+  </button>
+</div>
+
 <div class="seller-update-product-main-container">
-    <div id="seller-update-product-instruct-container" class="seller-update-product-container">
-      <h1 class="seller-update-product-heading">update Product</h1>
-      <br />
-      <img src="../../../assets/imgs/update-product.png" alt="seller" />
-    </div>
-  
-    <div id="seller-update-product-form-container" class="seller-update-product-container">
-      <form #updateProduct="ngForm" (ngSubmit)="onUpdateProduct(updateProduct)">
-        <div class="form-group">
-          <label for="Name"
-            >Name<span class="required-field-label">*</span></label
+  <div
+    id="seller-update-product-instruct-container"
+    class="seller-update-product-container"
+  >
+    <h1 class="seller-update-product-heading">update Product</h1>
+    <br />
+    <img src="../../../assets/imgs/update-product.png" alt="seller" />
+  </div>
+
+  <div
+    id="seller-update-product-form-container"
+    class="seller-update-product-container"
+  >
+    <form #updateProduct="ngForm" (ngSubmit)="onUpdateProduct(updateProduct)">
+      <div class="form-group">
+        <label for="Name"
+          >Name<span class="required-field-label">*</span></label
+        >
+        <input
+          type="text"
+          id="Name"
+          class="form-control"
+          required
+          ngModel="{{ product?.Name }}"
+          name="Name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="Price"
+          >Price($)<span class="required-field-label">*</span></label
+        >
+        <input
+          type="number"
+          id="Price"
+          class="form-control"
+          required
+          ngModel="{{ product?.Price }}"
+          name="Price"
+          maxlength="3"
+          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+        />
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label for="Category"
+            >Category<span class="required-field-label">*</span></label
           >
-          <input
-            type="text"
-            id="Name"
+          <select
             class="form-control"
+            id="Category"
             required
-            ngModel="{{product?.Name}}"
-            name="Name"
-          />
+            ngModel="{{ product?.Category }}"
+            name="Category"
+          >
+            <option value="" disabled selected>Select Category</option>
+            <option value="Sports">Sports</option>
+            <option value="Home and Furniture">Home and Furniture</option>
+            <option value="Health and Beauty">Health and Beauty</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Toys and Games">Toys and Games</option>
+            <option value="Fashion">Fashion</option>
+            <option value="Books and Media">Books and Media</option>
+          </select>
         </div>
-  
-        <div class="form-group">
-          <label for="Price"
-            >Price($)<span class="required-field-label">*</span></label
+        <div class="col">
+          <label for="Quantity"
+            >Quantity<span class="required-field-label">*</span></label
           >
           <input
             type="number"
-            id="Price"
+            id="Quantity"
             class="form-control"
             required
-            ngModel="{{product?.Price}}"
-            name="Price"
+            ngModel="{{ product?.Quantity }}"
+            name="Quantity"
             maxlength="3"
             oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
           />
         </div>
-  
-        <div class="row">
-          <div class="col">
-            <label for="Category"
-              >Category<span class="required-field-label">*</span></label
-            >
-            <select
-              class="form-control"
-              id="Category"
-              required
-              ngModel="{{product?.Category}}"
-              name="Category"
-            >
-              <option value="" disabled selected>Select Category</option>
-              <option value="Sports">Sports</option>
-              <option value="Home and Furniture">Home and Furniture</option>
-              <option value="Health and Beauty">Health and Beauty</option>
-              <option value="Electronics">Electronics</option>
-              <option value="Toys and Games">Toys and Games</option>
-              <option value="Fashion">Fashion</option>
-              <option value="Books and Media">Books and Media</option>
-            </select>
-          </div>
-          <div class="col">
-            <label for="Quantity"
-              >Quantity<span class="required-field-label">*</span></label
-            >
-            <input
-              type="number"
-              id="Quantity"
-              class="form-control"
-              required
-              ngModel="{{product?.Quantity}}"
-              name="Quantity"
-              maxlength="3"
-              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-            />
-          </div>
+      </div>
+
+      <div class="radio-input-main-container form-group">
+        <label>Payment-Method</label>
+        <div class="radio-input-container">
+          <input
+            type="radio"
+            id="Cash-payment"
+            name="PaymentMethod"
+            value="Cash"
+            ngModel="{{ product?.PaymentMethod }}"
+          />
+          <label for="Cash-payment" style="font-weight: normal">Cash</label>
         </div>
-  
-        <div class="radio-input-main-container form-group">
-          <label>Payment-Method</label>
-          <div class="radio-input-container">
-            <input
-              type="radio"
-              id="Cash-payment"
-              name="PaymentMethod"
-              value="Cash"
-              ngModel="{{product?.PaymentMethod}}"
-            />
-            <label for="Cash-payment" style="font-weight: normal">Cash</label>
-          </div>
-  
-          <div class="radio-input-container">
-            <input
-              type="radio"
-              id="Online-payment"
-              name="PaymentMethod"
-              value="Online"
-              ngModel="{{product?.PaymentMethod}}"
-            />
-            <label for="Online-payment" style="font-weight: normal">Online</label>
-          </div>
-  
-          <div class="radio-input-container">
-            <input
-              type="radio"
-              id="Any-payment"
-              name="PaymentMethod"
-              value="Both"
-              ngModel="{{product?.PaymentMethod}}"
-            />
-            <label for="Any-payment" style="font-weight: normal">Both</label>
-          </div>
+
+        <div class="radio-input-container">
+          <input
+            type="radio"
+            id="Online-payment"
+            name="PaymentMethod"
+            value="Online"
+            ngModel="{{ product?.PaymentMethod }}"
+          />
+          <label for="Online-payment" style="font-weight: normal">Online</label>
         </div>
-  
-        <div class="form-group">
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="List-product-check"
-              checked
-              name="ListProduct"
-              ngModel
-              [checked]="product?.ListProduct"
-            />
-            <label class="form-check-label" for="List-product-check">
-              List this product in store
-            </label>
-          </div>
+
+        <div class="radio-input-container">
+          <input
+            type="radio"
+            id="Any-payment"
+            name="PaymentMethod"
+            value="Both"
+            ngModel="{{ product?.PaymentMethod }}"
+          />
+          <label for="Any-payment" style="font-weight: normal">Both</label>
         </div>
-  
-        <div class="alert alert-danger" role="alert" *ngIf="invalidSubmission">
-          Please enter all required fields in proper format!
+      </div>
+
+      <div class="form-group">
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="List-product-check"
+            checked
+            name="ListProduct"
+            ngModel
+            [checked]="product?.ListProduct"
+          />
+          <label class="form-check-label" for="List-product-check">
+            List this product in store
+          </label>
         </div>
-  
-        <div class="alert alert-success" role="alert" *ngIf="updateProductSuccess">
-          Product updated successfully!
-        </div>
-  
-        <button class="btn btn-primary btn-general-height">update Product</button>
-  
-      </form>
-    </div>
+      </div>
+
+      <div class="alert alert-danger" role="alert" *ngIf="invalidSubmission">
+        Please enter all required fields in proper format!
+      </div>
+
+      <div
+        class="alert alert-success"
+        role="alert"
+        *ngIf="updateProductSuccess"
+      >
+        Product updated successfully!
+      </div>
+
+      <button class="btn btn-primary btn-general-height">update Product</button>
+    </form>
   </div>
-  
+</div>

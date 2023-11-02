@@ -1,5 +1,9 @@
-.image-container{
-  position: relative;
+.image-container {
+  position: relative;  
+}
+
+img{
+  z-index: -1;
 }
 
 .category-lable {
@@ -12,23 +16,39 @@
 }
 
 .product-main-container:hover .product-action-container {
-    visibility: visible;
+  visibility: visible;
 }
 
 .product-action-container {
-    display: flex;
-    justify-content: space-around;
-    width: 35%;
-    margin: auto;
-    visibility: hidden;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  visibility: hidden;
+  position: absolute;
+  bottom: 0;
+  padding: 0 30%;
+}
+
+.product-action-container button {
+  color: white;
+  z-index: 100;
 }
 
 .material-icons:hover {
   cursor: pointer;
-  transform: scale(1.2);
-  transition: transform 0.3s;
 }
 
-button{
+button {
   height: 40px;
+}
+
+.seller-lable {
+  background-color: rgb(189, 189, 189);
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  left: 6%;
+  padding: 7px;
+  border-radius: 5%;
+  z-index: 0;
 }

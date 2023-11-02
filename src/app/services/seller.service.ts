@@ -14,6 +14,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class SellerService {
   static isSellerAuthenticated: boolean = false;
   isloginError = new EventEmitter<boolean>(false);
+
   private sellerDataSubject = new BehaviorSubject<IsellerDataType | null>(null);
   sellerDataEmitter = this.sellerDataSubject.asObservable();
   seller: IsellerDataType | null = null;
@@ -52,28 +53,13 @@ export class SellerService {
       });
   }
 
-  //To add product by seller
-  sellerAddProduct(data: ISellerProduct) {
-    return this.http.post('http://localhost:3000/products', data);
-  }
-
-  //To get all products of a seller
-  sellerGetProducts() {
-    return this.http.get<ISellerProduct[]>(
-      `http://localhost:3000/products?SellerId=${this.seller?.id}`
-    );
-  }
-
-  //delete a product
-  sellerDeleteProduct(id: number|undefined) {
-    if(id)
-    {
-      this.http.delete(`http://localhost:3000/products/${id}`).subscribe(res=>{
-      });
+  sellerDataEmit() {
+    let sellerData = localStorage.getItem('seller');
+    if (sellerData) {
+      this.seller = JSON.parse(sellerData);
+    } else {
+      this.seller = null;
     }
-  }
-
-  sellerGetProduct(id:string|null){
-      return this.http.get<ISellerProduct>(`http://localhost:3000/products/${id}`);
+    this.sellerDataSubject.next(this.seller);
   }
 }

@@ -19,14 +19,26 @@
   ],
   "products": [
     {
-      "SellerId": 2,
-      "Name": "Cricket products",
-      "Price": 55,
-      "Category": "Sports",
-      "Quantity": 66,
+      "SellerId": 1,
+      "StoreName": "abc",
+      "Name": "a",
+      "Price": 5,
+      "Category": "Health and Beauty",
+      "Quantity": 5,
       "PaymentMethod": "Both",
       "ListProduct": true,
       "id": 1
+    },
+    {
+      "SellerId": 2,
+      "StoreName": "All in one",
+      "Name": "5",
+      "Price": 5,
+      "Category": "Home and Furniture",
+      "Quantity": 5,
+      "PaymentMethod": "Both",
+      "ListProduct": true,
+      "id": 2
     }
   ]
 }

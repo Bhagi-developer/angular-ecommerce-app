@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import ISellerProduct, { IsellerDataType } from 'src/app/data-type';
 import { HttpClient } from '@angular/common/http';
 import { SellerService } from 'src/app/services/seller.service';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-seller-home',
@@ -14,39 +15,32 @@ export class SellerHomeComponent {
 
   data: any = [];
 
-  constructor(private sellerService: SellerService, private http:HttpClient) {
-    const sellerData = localStorage.getItem('seller');
-    if (sellerData) {
-      this.seller = JSON.parse(sellerData);
-    }
+  constructor(private sellerService: SellerService, private http: HttpClient, private productService:ProductService) {
+    this.sellerService.sellerDataEmitter.subscribe((res) => {
+      this.seller = res;
+    });
   }
 
   ngOnInit() {
-    console.log('hello world');
-
-    this.sellerService.sellerGetProducts().subscribe((res) => {
+    this.productService.sellerGetProducts().subscribe((res) => {
       if (res) {
         this.products = res;
       } else {
-        console.log('no produts to show');
-        this.products= [];
+        this.products = [];
       }
     });
   }
 
-  updateProducts(confirm:boolean){
-    if(confirm)
-    {
-      this.sellerService.sellerGetProducts().subscribe((res)=>{
-        if(res)
-        {
-          this.products= res;
-        }
-        else{
+  updateProducts(confirm: boolean) {
+    if (confirm) {
+      this.productService.sellerGetProducts().subscribe((res) => {
+        if (res) {
+          this.products = res;
+        } else {
           console.log('no products to show');
-          this.products= [];
+          this.products = [];
         }
-      })
+      });
     }
   }
 }

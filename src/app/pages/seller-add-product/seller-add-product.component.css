@@ -1,3 +1,12 @@
+.navigate-seller-home-btn-container {
+  margin: 0 1%;
+}
+
+.navigate-seller-home-btn-container button {
+  text-align: center;
+  justify-content: center;
+}
+
 .seller-add-product-main-container {
   display: flex;
   height: 70vh;
@@ -12,7 +21,7 @@
   flex: 0.6;
 }
 
-.seller-add-product-container{
+.seller-add-product-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24,26 +33,25 @@ form {
   margin: 0 20px 0 0;
 }
 
-form label
-{
+form label {
   width: 100%;
   margin: 5px 0;
   font-weight: bold;
 }
 
-.radio-input-container{
+.radio-input-container {
   display: flex;
   flex-direction: row;
 }
 
-.radio-input-main-container{
+.radio-input-main-container {
   margin: 10px 0;
 }
 
-.radio-input-container label{
+.radio-input-container label {
   margin: 0 0 0 10px;
 }
 
-.alert{
+.alert {
   margin: 10px 0;
 }

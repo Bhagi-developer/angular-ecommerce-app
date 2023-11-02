@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { CSP_NONCE, Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { SellerService } from '../services/seller.service';
 import { filter } from 'rxjs/operators';
@@ -14,7 +14,9 @@ export class NavbarComponent implements OnInit {
   seller: IsellerDataType | null = null;
   pageViewType: string = 'default';
 
-  constructor(private router: Router, private sellerService: SellerService) {}
+  constructor(private router: Router, private sellerService: SellerService) {
+    console.log("navbar");
+  }
 
   ngOnInit(): void {
     this.router.events
@@ -30,10 +32,13 @@ export class NavbarComponent implements OnInit {
         }
       });
 
-    const sellerData = localStorage.getItem('seller');
-    if (sellerData) {
-      this.seller = JSON.parse(sellerData);
-    }
+      //emitting seller data from service
+    this.sellerService.sellerDataEmit();
+    
+    this.sellerService.sellerDataEmitter.subscribe((res)=>{
+      this.seller= res;
+    })
+
   }
 
   onLogout() {

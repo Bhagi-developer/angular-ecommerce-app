@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import ISellerProduct from 'src/app/data-type';
+import { ProductService } from 'src/app/services/product.service';
 import { SellerService } from 'src/app/services/seller.service';
 
 @Component({
@@ -10,12 +11,13 @@ import { SellerService } from 'src/app/services/seller.service';
 })
 export class SellerProductComponent {
   @Input() product: ISellerProduct | null = null;
+  @Input() editAccess:boolean = false;
   @Output() updateProducts= new EventEmitter<boolean>();
 
-  constructor(private sellerService: SellerService, private route:Router) {}
+  constructor(private sellerService: SellerService, private route:Router, private productService:ProductService) {}
 
   deleteProduct(id: number | undefined) {
-    this.sellerService.sellerDeleteProduct(id);
+    this.productService.sellerDeleteProduct(id);
     this.updateProducts.emit(true);
   }
 

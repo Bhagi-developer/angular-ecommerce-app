@@ -1,0 +1,25 @@
+.home-product-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: auto;
+    width: 100%;
+  }
+  
+  .seller-products-instruct-container h3 {
+    color: grey;
+    text-align: center;
+  }
+  
+  .seller-product-container {
+    width: 22%;
+    text-align: center;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    margin: 1.5%;
+    transition: transform 330ms ease-in-out;
+  }
+  
+  .seller-product-container:hover {
+    transform: scale(1.05);
+  }
+  

@@ -25,6 +25,7 @@ export interface IsellerLoginDataType
 export default interface ISellerProduct
 {
     SellerId:number,
+    StoreName:string,
     Name:string,
     Price:number,
     Category:string,

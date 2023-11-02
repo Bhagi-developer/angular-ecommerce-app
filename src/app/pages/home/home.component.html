@@ -1,1 +1,5 @@
-<p class="text-center">home works!</p>
+<div class="home-product-list-container">
+    <div *ngFor="let product of products" class="seller-product-container">
+      <app-seller-product [product]="product"></app-seller-product>
+    </div>
+  </div>

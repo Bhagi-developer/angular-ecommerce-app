@@ -15,7 +15,7 @@
 
   <div class="store-product-list-container">
     <div *ngFor="let product of products" class="seller-product-container">
-      <app-seller-product [product]="product" (updateProducts)="updateProducts($event)"></app-seller-product>
+      <app-seller-product [product]="product" [editAccess]="true" (updateProducts)="updateProducts($event)"></app-seller-product>
     </div>
   </div>
 

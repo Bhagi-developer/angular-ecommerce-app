@@ -1,13 +1,25 @@
+<div class="navigate-seller-home-btn-container">
+  <button type="button" class="btn btn-dark" routerLink="/seller-home">
+    ˂ Seller Home
+  </button>
+</div>
+
 <div class="seller-add-product-main-container">
-  <div id="seller-add-product-instruct-container" class="seller-add-product-container">
+  <div
+    id="seller-add-product-instruct-container"
+    class="seller-add-product-container"
+  >
     <h1 class="seller-add-product-heading">Add Product</h1>
     <br />
     <img src="../../../assets/imgs/add-product.png" alt="seller" />
   </div>
 
-  <div id="seller-add-product-form-container" class="seller-add-product-container">
+  <div
+    id="seller-add-product-form-container"
+    class="seller-add-product-container"
+  >
     <form #addProduct="ngForm" (ngSubmit)="onAddProdct(addProduct)">
-      <h3>{{seller?.StoreName}} Store</h3>
+      <h3>{{ seller?.StoreName }} Store</h3>
       <div class="form-group">
         <label for="Name"
           >Name<span class="required-field-label">*</span></label
@@ -138,7 +150,6 @@
       </div>
 
       <button class="btn btn-primary btn-general-height">Add Product</button>
-
     </form>
   </div>
 </div>

@@ -1,25 +1,37 @@
 <div class="product-main-container">
-
   <div class="image-container">
     <img
       [src]="
-        'https://source.unsplash.com/300x300/?ecommerce,' + product?.Category
+     'https://source.unsplash.com/300x300/?processor,' + product?.Category
       "
       alt="product"
     />
     <p class="category-lable">{{ product?.Category }}</p>
-  </div>
 
-  <div class="product-info-container">
-    <div class="product-action-container">
-      <button type="button" class="btn btn-light" (click)="deleteProduct(product?.id)">
+    <div class="product-action-container" *ngIf="editAccess">
+      <button
+        type="button"
+        class="btn btn-dark"
+        (click)="deleteProduct(product?.id)"
+      >
         <i class="material-icons">delete</i>
       </button>
-      <button type="button" class="btn btn-light" (click)="updateProduct(product?.id)">
+      <button
+        type="button"
+        class="btn btn-dark"
+        (click)="updateProduct(product?.id)"
+      >
         <i class="material-icons">edit</i>
       </button>
     </div>
 
+    <p class="seller-lable">
+      {{product?.StoreName}} store
+    </p>
+
+  </div>
+
+  <div class="product-info-container">
     <div class="product-info-heading-container">
       <h3>{{ product?.Name }}</h3>
       <h3>price- {{ product?.Price }}$</h3>

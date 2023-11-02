@@ -13,6 +13,9 @@ import { NoContentComponent } from './pages/no-content/no-content.component';
 import { SellerAddProductComponent } from './pages/seller-add-product/seller-add-product.component';
 import { SellerProductComponent } from './pages/seller-product/seller-product.component';
 import { SellerUpdateProductComponent } from './pages/seller-update-product/seller-update-product.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { SellerUpdateProductComponent } from './pages/seller-update-product/sell
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
+    ModalModule.forRoot(),
+    TooltipModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
