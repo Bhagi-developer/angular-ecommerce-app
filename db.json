@@ -7,7 +7,26 @@
       "Email": "bhagirath@gmail.com",
       "Password": "a",
       "id": 1
+    },
+    {
+      "Email": "bhagirathsinhmakwana2001@gmail.com",
+      "Password": "a",
+      "FName": "Bhagirath",
+      "LName": "Makwana",
+      "StoreName": "All in one",
+      "id": 2
     }
   ],
-  "products": []
+  "products": [
+    {
+      "SellerId": 2,
+      "Name": "Cricket products",
+      "Price": 55,
+      "Category": "Sports",
+      "Quantity": 66,
+      "PaymentMethod": "Both",
+      "ListProduct": true,
+      "id": 1
+    }
+  ]
 }

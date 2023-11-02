@@ -11,38 +11,34 @@ import { SellerAddProductComponent } from '../pages/seller-add-product/seller-ad
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-
   seller: IsellerDataType | null = null;
   pageViewType: string = 'default';
 
-  constructor(private router: Router, private sellerService: SellerService) {
-    this.sellerService.sellerDataEmitter.subscribe((seller) => {
-      this.seller = seller;
-      // SellerAddProductComponent.seller= this.seller;
-    });
-  }
+  constructor(private router: Router, private sellerService: SellerService) {}
 
   ngOnInit(): void {
     this.router.events
-      .pipe(
-        filter((event) => event instanceof NavigationEnd),
-      )
-      .subscribe((event:any) => {
-        if(event.url.includes('seller') && SellerService.isSellerAuthenticated)
-        {
-          this.pageViewType= 'seller';
-        }
-        else
-        {
-          this.pageViewType= 'default';
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: any) => {
+        if (
+          event.url.includes('seller') &&
+          SellerService.isSellerAuthenticated
+        ) {
+          this.pageViewType = 'seller';
+        } else {
+          this.pageViewType = 'default';
         }
       });
+
+    const sellerData = localStorage.getItem('seller');
+    if (sellerData) {
+      this.seller = JSON.parse(sellerData);
+    }
   }
 
-  onLogout()
-  {
+  onLogout() {
     localStorage.removeItem('seller');
-    SellerService.isSellerAuthenticated= false;
+    SellerService.isSellerAuthenticated = false;
     this.router.navigate(['/seller-auth']);
   }
 }

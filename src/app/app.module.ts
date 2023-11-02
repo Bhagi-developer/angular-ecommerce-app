@@ -11,6 +11,8 @@ import {  HttpClientModule } from '@angular/common/http';
 import { SellerHomeComponent } from './pages/seller-home/seller-home.component';
 import { NoContentComponent } from './pages/no-content/no-content.component';
 import { SellerAddProductComponent } from './pages/seller-add-product/seller-add-product.component';
+import { SellerProductComponent } from './pages/seller-product/seller-product.component';
+import { SellerUpdateProductComponent } from './pages/seller-update-product/seller-update-product.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { SellerAddProductComponent } from './pages/seller-add-product/seller-add
     SellerAuthComponent,
     SellerHomeComponent,
     NoContentComponent,
-    SellerAddProductComponent
+    SellerAddProductComponent,
+    SellerProductComponent,
+    SellerUpdateProductComponent
   ],
   imports: [
     BrowserModule,

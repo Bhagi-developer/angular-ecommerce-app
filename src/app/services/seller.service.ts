@@ -1,5 +1,5 @@
-import { EventEmitter, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { EventEmitter, Injectable, numberAttribute } from '@angular/core';
+import { HttpClient, HttpStatusCode } from '@angular/common/http';
 import ISellerProduct, {
   ISellerSignupDataType,
   IsellerDataType,
@@ -16,10 +16,13 @@ export class SellerService {
   isloginError = new EventEmitter<boolean>(false);
   private sellerDataSubject = new BehaviorSubject<IsellerDataType | null>(null);
   sellerDataEmitter = this.sellerDataSubject.asObservable();
+  seller: IsellerDataType | null = null;
 
   constructor(private http: HttpClient, private route: Router) {
-    if (localStorage.getItem('seller')) {
+    let sellerData = localStorage.getItem('seller');
+    if (sellerData) {
       SellerService.isSellerAuthenticated = true;
+      this.seller = JSON.parse(sellerData);
     } else {
       SellerService.isSellerAuthenticated = false;
     }
@@ -49,8 +52,28 @@ export class SellerService {
       });
   }
 
-  //To add product in seller
+  //To add product by seller
   sellerAddProduct(data: ISellerProduct) {
     return this.http.post('http://localhost:3000/products', data);
+  }
+
+  //To get all products of a seller
+  sellerGetProducts() {
+    return this.http.get<ISellerProduct[]>(
+      `http://localhost:3000/products?SellerId=${this.seller?.id}`
+    );
+  }
+
+  //delete a product
+  sellerDeleteProduct(id: number|undefined) {
+    if(id)
+    {
+      this.http.delete(`http://localhost:3000/products/${id}`).subscribe(res=>{
+      });
+    }
+  }
+
+  sellerGetProduct(id:string|null){
+      return this.http.get<ISellerProduct>(`http://localhost:3000/products/${id}`);
   }
 }

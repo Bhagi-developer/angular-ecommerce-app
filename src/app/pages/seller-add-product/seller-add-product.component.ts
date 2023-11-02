@@ -16,9 +16,10 @@ export class SellerAddProductComponent {
   addProductSuccess:boolean= false;
 
   constructor(private sellerService: SellerService) {
-    this.sellerService.sellerDataEmitter.subscribe((data) => {
-      this.seller = data;
-    });
+    const sellerData = localStorage.getItem('seller');
+    if (sellerData) {
+      this.seller = JSON.parse(sellerData);
+    }
   }
 
   onAddProdct(productDetail: NgForm) {

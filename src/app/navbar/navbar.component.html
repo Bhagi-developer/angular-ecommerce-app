@@ -12,8 +12,8 @@
       </ul>
 
       <ul *ngSwitchCase="'seller'">
+        <li><a routerLink="/seller-home" class="app-text-color">Store</a></li>
         <li><a routerLink="/seller-add-product" class="app-text-color">Add Product</a></li>
-        <li><a routerLink="/seller-home" class="app-text-color">List</a></li>
         <li><a class="app-text-color">{{seller?seller.FName:"seller" | titlecase}}</a></li>
         <li><a class="app-text-color cursor-pointer" (click)="onLogout()">Log out</a></li>
       </ul>

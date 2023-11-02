@@ -30,5 +30,6 @@ export default interface ISellerProduct
     Category:string,
     Quantity:number,
     PaymentMethod:string,
-    ListProduct:boolean
+    ListProduct:boolean,
+    id:number
 }

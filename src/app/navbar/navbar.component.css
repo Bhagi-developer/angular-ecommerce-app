@@ -1,50 +1,45 @@
-.navbar
-{
-    display: flex;
-    justify-content: space-around;
+.navbar {
+  display: flex;
+  justify-content: space-around;
 }
 
-.navbar div{
-    flex: 1;
+.navbar div {
+  flex: 1;
 }
 
-.navbar .nav-logo
-{
-    text-align: center;
+.navbar .nav-logo {
+  text-align: center;
 }
 
-.navbar .nav-logo h1
-{
-    display: inline;
+.navbar .nav-logo h1 {
+  display: inline;
 }
-.navbar .nav-list
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.navbar .nav-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.navbar a
-{
-    text-decoration: none;
-    font-weight: bold;
+.navbar a {
+  text-decoration: none;
+  font-weight: bold;
 }
 
-.navbar ul{
-    margin: 0 25%;
-    padding: 0;
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
-    flex:1;
+.navbar ul {
+  margin: 0 25%;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  flex: 1;
 }
 
-.navbar .nav-search{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.navbar .nav-search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.navbar .search-product-btn{
-    color: white;
+.navbar .search-product-btn {
+  color: white;
 }
