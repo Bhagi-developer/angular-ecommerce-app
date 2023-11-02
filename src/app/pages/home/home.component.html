@@ -1,5 +1,5 @@
 <div class="home-product-list-container">
-    <div *ngFor="let product of products" class="seller-product-container">
+    <div *ngFor="let product of products" class="home-product-container" (click)="openProductDetail(product.id)">
       <app-seller-product [product]="product"></app-seller-product>
     </div>
   </div>

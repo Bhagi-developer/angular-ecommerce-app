@@ -11,7 +11,7 @@
     text-align: center;
   }
   
-  .seller-product-container {
+  .home-product-container {
     width: 22%;
     text-align: center;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
@@ -19,7 +19,7 @@
     transition: transform 330ms ease-in-out;
   }
   
-  .seller-product-container:hover {
+  .home-product-container:hover {
     transform: scale(1.05);
   }
   

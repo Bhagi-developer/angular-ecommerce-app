@@ -16,6 +16,7 @@ import { SellerUpdateProductComponent } from './pages/seller-update-product/sell
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ProductComponent } from './pages/product/product.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     NoContentComponent,
     SellerAddProductComponent,
     SellerProductComponent,
-    SellerUpdateProductComponent
+    SellerUpdateProductComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,

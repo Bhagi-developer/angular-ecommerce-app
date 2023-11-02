@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { SellerService } from 'src/app/services/seller.service';
 import { ProductService } from 'src/app/services/product.service';
 import ISellerProduct from 'src/app/data-type';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ import ISellerProduct from 'src/app/data-type';
 export class HomeComponent {
   products:ISellerProduct[]|null= null;
   
-  constructor(private http:HttpClient, private sellerService:SellerService, private productService:ProductService){
+  constructor(private http:HttpClient, private sellerService:SellerService, private productService:ProductService, private route:Router){
 
   }
 
@@ -22,5 +23,9 @@ export class HomeComponent {
     this.productService.getAllProducts().subscribe((res)=>{
       this.products= res;
     })
+  }
+
+  openProductDetail(id:number){
+    this.route.navigate([`/product/${id}`])
   }
 }
