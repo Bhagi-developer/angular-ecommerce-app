@@ -1,0 +1,19 @@
+<div class="store-product-main-container">
+  <div class="alert alert-info text-center" role="alert">
+    products available in
+    {{ storeProducts && storeProducts[0].StoreName }} store
+  </div>
+
+  <div class="store-product-list-container">
+    <div *ngFor="let product of storeProducts" class="store-product-container">
+      <app-seller-product
+        [product]="product"
+        (click)="openProductDetail(product.id)"
+        [storeLabelVisibility]="false"
+      ></app-seller-product>
+      <div class="store-product-action-container">
+        <button class="btn btn-outline-primary">add to cart</button>
+      </div>
+    </div>
+  </div>
+</div>

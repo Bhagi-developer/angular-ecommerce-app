@@ -13,19 +13,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  products:ISellerProduct[]|null= null;
+  products:ISellerProduct[]|undefined= undefined;
   
   constructor(private http:HttpClient, private sellerService:SellerService, private productService:ProductService, private route:Router){
 
   }
 
   ngOnInit(){
-    this.productService.getAllProducts().subscribe((res)=>{
-      this.products= res;
+    this.productService.searchProductsEmitter.subscribe((res)=>{
+      this.products=res;
     })
   }
 
   openProductDetail(id:number){
     this.route.navigate([`/product/${id}`])
+  }
+
+  openSellerStore(sellerId:number)
+  {
+    this.route.navigate([`/store/${sellerId}`]);
   }
 }

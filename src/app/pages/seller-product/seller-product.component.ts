@@ -11,6 +11,7 @@ import { SellerService } from 'src/app/services/seller.service';
 })
 export class SellerProductComponent {
   @Input() product: ISellerProduct | null = null;
+  @Input() storeLabelVisibility: boolean = true;
   @Input() editAccess:boolean = false;
   @Output() updateProducts= new EventEmitter<boolean>();
 

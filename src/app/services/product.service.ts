@@ -2,25 +2,31 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import ISellerProduct, { IsellerDataType } from '../data-type';
 import { SellerService } from './seller.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  seller:IsellerDataType|null= null;
-  constructor(private http: HttpClient, private sellerService:SellerService) {}
+  seller: IsellerDataType | null = null;
+  private searchProductsSubject = new BehaviorSubject<ISellerProduct[] | undefined>(
+    undefined
+  );
+  searchProductsEmitter = this.searchProductsSubject.asObservable();
 
-  ngOnInit(){
-    this.sellerService.sellerDataEmitter.subscribe((res)=>{
-      this.seller= res;
-    })
+  constructor(private http: HttpClient, private sellerService: SellerService) {}
+
+  ngOnInit() {
+    this.sellerService.sellerDataEmitter.subscribe((res) => {
+      this.seller = res;
+    });
   }
-  
+
   //To add product by seller
   sellerAddProduct(data: ISellerProduct) {
     return this.http.post('http://localhost:3000/products', data);
   }
-  
+
   //To get all products of a seller
   sellerGetProducts() {
     let sellerData = localStorage.getItem('seller');
@@ -33,7 +39,12 @@ export class ProductService {
     );
   }
 
-  
+  //To get all products of seller by id
+  sellerGetProductsById(id:string){
+    return this.http.get<ISellerProduct[]>(
+      `http://localhost:3000/products?SellerId=${id}`
+    );
+  }
 
   //delete a product
   sellerDeleteProduct(id: number | undefined) {
@@ -59,5 +70,24 @@ export class ProductService {
   //get all products
   getAllProducts() {
     return this.http.get<ISellerProduct[]>('http://localhost:3000/products');
+  }
+
+  //get search suggetions
+  getSuggestedProducts(query: string) {
+    return this.http.get<ISellerProduct[]>(
+      `http://localhost:3000/products?q=${query}`
+    );
+  }
+
+  //all produts emitter
+  emitAllProducts(){
+    this.getAllProducts().subscribe((res)=>{
+      this.searchProductsSubject.next(res);
+    })
+  }
+
+  //filter products from search emitter
+  emitSearchProducts(products:ISellerProduct[]|undefined) {
+    this.searchProductsSubject.next(products);
   }
 }

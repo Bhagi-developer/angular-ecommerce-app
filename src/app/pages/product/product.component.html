@@ -1,5 +1,24 @@
 <div class="product-main-container">
   <div class="product-image-container">
-    <img src="" alt="">
+    <img
+      [src]="'https:///source.unsplash.com/300x300/?' + product?.Name"
+      alt=""
+    />
+  </div>
+  <div class="product-details-container">
+    <h2 class="product-name alert alert-primary">{{ product?.Name }}</h2>
+    <p class="product-price">Price- ${{ product?.Price }}</p>
+    <p class="product-category">category- {{ product?.Category }}</p>
+    <p class="product-quantity">
+      quantity available- {{ product?.Quantity }}
+    </p>
+    <p class="product-storeName alert alert-secondary">
+      from {{ product?.StoreName }} store
+    </p>
+
+    <div class="product-action-container">
+      <button class="btn btn-primary">add to cart</button>
+      <button type="button" class="btn btn-dark" (click)="openSellerStore(product?.SellerId)">Visit store</button>
+    </div>
   </div>
 </div>

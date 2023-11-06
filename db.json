@@ -19,12 +19,12 @@
   ],
   "products": [
     {
-      "SellerId": 1,
-      "StoreName": "abc",
-      "Name": "a",
-      "Price": 5,
-      "Category": "Health and Beauty",
-      "Quantity": 5,
+      "SellerId": 2,
+      "StoreName": "All in one",
+      "Name": "cricket bat",
+      "Price": 50,
+      "Category": "Sports",
+      "Quantity": 65,
       "PaymentMethod": "Both",
       "ListProduct": true,
       "id": 1
@@ -32,13 +32,57 @@
     {
       "SellerId": 2,
       "StoreName": "All in one",
-      "Name": "5",
-      "Price": 5,
-      "Category": "Home and Furniture",
-      "Quantity": 5,
+      "Name": "protein Supplement",
+      "Price": 40,
+      "Category": "Health and Beauty",
+      "Quantity": 36,
       "PaymentMethod": "Both",
       "ListProduct": true,
       "id": 2
+    },
+    {
+      "SellerId": 2,
+      "StoreName": "All in one",
+      "Name": "Samsung mobile",
+      "Price": 120,
+      "Category": "Electronics",
+      "Quantity": 54,
+      "PaymentMethod": "Both",
+      "ListProduct": true,
+      "id": 3
+    },
+    {
+      "SellerId": 2,
+      "StoreName": "All in one",
+      "Name": "apple mobile",
+      "Price": 200,
+      "Category": "Electronics",
+      "Quantity": 32,
+      "PaymentMethod": "Both",
+      "ListProduct": true,
+      "id": 4
+    },
+    {
+      "SellerId": 1,
+      "StoreName": "abc",
+      "Name": "remote control car",
+      "Price": 15,
+      "Category": "Toys and Games",
+      "Quantity": 54,
+      "PaymentMethod": "Both",
+      "ListProduct": true,
+      "id": 5
+    },
+    {
+      "SellerId": 1,
+      "StoreName": "abc",
+      "Name": "rich dad poor dad",
+      "Price": 15,
+      "Category": "Books and Media",
+      "Quantity": 90,
+      "PaymentMethod": "Both",
+      "ListProduct": true,
+      "id": 6
     }
   ]
 }

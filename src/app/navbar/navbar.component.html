@@ -1,11 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <div class="nav-logo">
-      <h1 class="logo"><a routerLink="/" class="app-text-color">EcommApp</a></h1>
+      <h1 class="logo">
+        <a routerLink="/" class="app-text-color" (click)="getAllHomeProducts()">EcommApp</a>
+      </h1>
     </div>
     <div class="nav-list" [ngSwitch]="pageViewType">
       <ul class="ul-links" *ngSwitchCase="'default'">
-        <li><a routerLink="/" class="app-text-color">Home</a></li>
+        <li><a routerLink="/" class="app-text-color" (click)="getAllHomeProducts()">Home</a></li>
         <li><a routerLink="/seller-auth" class="app-text-color">Seller</a></li>
         <li><a class="app-text-color">Login</a></li>
         <li><a class="app-text-color">Cart(0)</a></li>
@@ -13,20 +15,46 @@
 
       <ul *ngSwitchCase="'seller'">
         <li><a routerLink="/seller-home" class="app-text-color">Store</a></li>
-        <li><a routerLink="/seller-add-product" class="app-text-color">Add Product</a></li>
-        <li><a class="app-text-color">{{seller?seller.FName:"seller" | titlecase}}</a></li>
-        <li><a class="app-text-color cursor-pointer" (click)="onLogout()">Log out</a></li>
+        <li>
+          <a routerLink="/seller-add-product" class="app-text-color"
+            >Add Product</a
+          >
+        </li>
+        <li>
+          <a class="app-text-color">{{
+            seller ? seller.FName : ("seller" | titlecase)
+          }}</a>
+        </li>
+        <li>
+          <a class="app-text-color cursor-pointer" (click)="onLogout()"
+            >Log out</a
+          >
+        </li>
       </ul>
     </div>
-    <div class="nav-search" *ngIf="pageViewType=='default'">
-      <input
-        type="text"
-        name=""
-        id=""
-        placeholder="search product"
-        class="form-control"
-      />
-      <button class="app-bg-color search-product-btn btn-general-height">search</button>
+    <div class="nav-search" *ngIf="pageViewType == 'default'">
+      <div class="search-product-input-container">
+        <input
+          type="text"
+          name=""
+          id=""
+          value=""
+          placeholder="search product"
+          class="form-control"
+          (keyup)="searchSuggetionTrigger($event)"
+          (focus)="searchSuggetionTrigger($event)"
+          [(ngModel)]="productSearchString"
+        />
+        <button class="app-bg-color search-product-btn btn-general-height" (click)="searchProductButtonClick()">
+          search
+        </button>
+      </div>
+
+      <div class="search-product-suggetions-container" *ngIf="showSuggetions">
+        <ul>
+          <li *ngFor="let item of searchSuggetionProducts" (click)="searchProductSuggetionClick(item.Name)"><i class="material-icons">search</i> {{item.Name}} ({{item.StoreName}} store)</li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
