@@ -18,6 +18,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ProductComponent } from './pages/product/product.component';
 import { SellerStoreComponent } from './pages/seller-store/seller-store.component';
+import { UserAuthComponent } from './pages/user-auth/user-auth.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SellerStoreComponent } from './pages/seller-store/seller-store.componen
     SellerProductComponent,
     SellerUpdateProductComponent,
     ProductComponent,
-    SellerStoreComponent
+    SellerStoreComponent,
+    UserAuthComponent
   ],
   imports: [
     BrowserModule,

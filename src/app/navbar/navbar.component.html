@@ -7,44 +7,43 @@
     </div>
     <div class="nav-list" [ngSwitch]="pageViewType">
       <ul class="ul-links" *ngSwitchCase="'default'">
-        <li><a routerLink="/" class="app-text-color" (click)="getAllHomeProducts()">Home</a></li>
+        <li>
+          <a routerLink="/" class="app-text-color" (click)="getAllHomeProducts()">Home</a>
+        </li>
         <li><a routerLink="/seller-auth" class="app-text-color">Seller</a></li>
-        <li><a class="app-text-color">Login</a></li>
+        <li><a routerLink="/user-auth" class="app-text-color">Login</a></li>
         <li><a class="app-text-color">Cart(0)</a></li>
+      </ul>
+
+      <ul class="ul-links" *ngSwitchCase="'user'">
+        <li>
+          <a routerLink="/" class="app-text-color" (click)="getAllHomeProducts()">Home</a>
+        </li>
+        <li><a routerLink="/seller-auth" class="app-text-color">Seller</a></li>
+        <li><a class="app-text-color">{{user?.FName}}</a></li>
+        <li><a class="app-text-color" (click)="onUserLogOut()">Log out</a></li>
       </ul>
 
       <ul *ngSwitchCase="'seller'">
         <li><a routerLink="/seller-home" class="app-text-color">Store</a></li>
         <li>
-          <a routerLink="/seller-add-product" class="app-text-color"
-            >Add Product</a
-          >
+          <a routerLink="/seller-add-product" class="app-text-color">Add Product</a>
         </li>
         <li>
           <a class="app-text-color">{{
             seller ? seller.FName : ("seller" | titlecase)
-          }}</a>
+            }}</a>
         </li>
         <li>
-          <a class="app-text-color cursor-pointer" (click)="onLogout()"
-            >Log out</a
-          >
+          <a class="app-text-color cursor-pointer" (click)="onSellerLogout()">Log out</a>
         </li>
       </ul>
     </div>
-    <div class="nav-search" *ngIf="pageViewType == 'default'">
+    <div class="nav-search" *ngIf="pageViewType == 'default' || pageViewType == 'user'">
       <div class="search-product-input-container">
-        <input
-          type="text"
-          name=""
-          id=""
-          value=""
-          placeholder="search product"
-          class="form-control"
-          (keyup)="searchSuggetionTrigger($event)"
-          (focus)="searchSuggetionTrigger($event)"
-          [(ngModel)]="productSearchString"
-        />
+        <input type="text" name="" id="" value="" placeholder="search product" class="form-control"
+          (keyup)="searchSuggetionTrigger($event)" (focus)="searchSuggetionTrigger($event)"
+          [(ngModel)]="productSearchString" />
         <button class="app-bg-color search-product-btn btn-general-height" (click)="searchProductButtonClick()">
           search
         </button>
@@ -52,7 +51,12 @@
 
       <div class="search-product-suggetions-container" *ngIf="showSuggetions">
         <ul>
-          <li *ngFor="let item of searchSuggetionProducts" (click)="searchProductSuggetionClick(item.Name)"><i class="material-icons">search</i> {{item.Name}} ({{item.StoreName}} store)</li>
+          <li *ngFor="let item of searchSuggetionProducts" (click)="searchProductSuggetionClick(item.Name)">
+            <i class="material-icons">search</i> {{ item.Name }} ({{
+            item.StoreName
+            }}
+            store)
+          </li>
         </ul>
       </div>
     </div>

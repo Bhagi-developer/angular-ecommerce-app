@@ -2,9 +2,10 @@ import { CSP_NONCE, Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { SellerService } from '../services/seller.service';
 import { filter } from 'rxjs/operators';
-import ISellerProduct, { IsellerDataType } from '../data-type';
+import ISellerProduct, { IsellerDataType, IUser } from '../data-type';
 import { SellerAddProductComponent } from '../pages/seller-add-product/seller-add-product.component';
 import { ProductService } from '../services/product.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,6 +14,7 @@ import { ProductService } from '../services/product.service';
 })
 export class NavbarComponent implements OnInit {
   seller: IsellerDataType | null = null;
+  user: IUser | null = null;
   pageViewType: string = 'default';
   showSuggetions: boolean = false;
   searchSuggetionProducts: undefined | ISellerProduct[] = undefined;
@@ -21,10 +23,9 @@ export class NavbarComponent implements OnInit {
   constructor(
     private router: Router,
     private sellerService: SellerService,
-    private productService: ProductService
-  ) {
-    console.log('navbar');
-  }
+    private productService: ProductService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
     this.router.events
@@ -35,28 +36,44 @@ export class NavbarComponent implements OnInit {
           SellerService.isSellerAuthenticated
         ) {
           this.pageViewType = 'seller';
+        } else if (UserService.isUserAuthenticated) {
+          this.pageViewType = 'user';
         } else {
           this.pageViewType = 'default';
         }
       });
 
-    //emitting seller data from service
+    //emitting seller data from seller service
     this.sellerService.sellerDataEmit();
 
     this.sellerService.sellerDataEmitter.subscribe((res) => {
       this.seller = res;
     });
 
+    //emitting user data from user service
+    this.userService.userDataEmit();
+
+    this.userService.userDataEmitter.subscribe((res) => {
+      this.user = res;
+    });
+
+    //get all products on intial page load
     this.productService.emitAllProducts();
   }
 
-  onLogout() {
+  onSellerLogout() {
     localStorage.removeItem('seller');
     SellerService.isSellerAuthenticated = false;
     this.router.navigate(['/seller-auth']);
   }
 
-  getAllHomeProducts(){
+  onUserLogOut() {
+    localStorage.removeItem('user');
+    UserService.isUserAuthenticated = false;
+    this.router.navigate(['/user-auth']);
+  }
+
+  getAllHomeProducts() {
     this.productService.emitAllProducts();
   }
 
@@ -65,6 +82,7 @@ export class NavbarComponent implements OnInit {
     let searchKeyWord = element.value.trim();
 
     if (searchKeyWord == '') {
+      this.getAllHomeProducts();
       this.searchSuggetionProducts = undefined;
     }
 
@@ -79,15 +97,21 @@ export class NavbarComponent implements OnInit {
   }
 
   searchProductSuggetionClick(productName: string) {
-    this.productService.emitSearchProducts(this.searchSuggetionProducts?.filter((product)=>{return product.Name==productName}));
-    this.searchSuggetionProducts=undefined;
-    this.productSearchString='';
+    this.productService.emitSearchProducts(
+      this.searchSuggetionProducts?.filter((product) => {
+        return product.Name == productName;
+      })
+    );
+    this.showSuggetions = false;
+    this.searchSuggetionProducts = undefined;
   }
 
   searchProductButtonClick() {
-    this.showSuggetions= false;
+    this.showSuggetions = false;
     if (this.productSearchString.trim() != '') {
-      this.productService.emitSearchProducts(this.searchSuggetionProducts? this.searchSuggetionProducts:undefined);
+      this.productService.emitSearchProducts(
+        this.searchSuggetionProducts ? this.searchSuggetionProducts : undefined
+      );
     }
   }
 }

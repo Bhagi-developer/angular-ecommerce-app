@@ -1,0 +1,46 @@
+.seller-auth-main-container {
+    display: flex;
+    height: 70vh;
+    margin-top: 40px;
+  }
+  
+  #seller-auth-instruct-container
+  {
+    flex: 0.4;
+  }
+  
+  #seller-auth-form-container
+  {
+    flex: 0.6;
+  } 
+  
+  .seller-auth-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  img{
+    height: 290px;
+    width: 350px;
+  }
+  
+  form{
+    width: 90%;
+    margin: 0 20px 0 0;
+  } 
+  
+  .form-row{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  form label
+  {
+    width: 100%;
+  }
+  
+  .toggelLoginSignupLink{
+     cursor: pointer;
+  }

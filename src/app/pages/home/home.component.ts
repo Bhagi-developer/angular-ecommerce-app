@@ -10,27 +10,29 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  products:ISellerProduct[]|undefined= undefined;
-  
-  constructor(private http:HttpClient, private sellerService:SellerService, private productService:ProductService, private route:Router){
+  products: ISellerProduct[] | undefined = undefined;
 
+  constructor(
+    private http: HttpClient,
+    private sellerService: SellerService,
+    private productService: ProductService,
+    private route: Router
+  ) {}
+
+  ngOnInit() {
+    this.productService.searchProductsEmitter.subscribe((res) => {
+      this.products = res;
+    });
   }
 
-  ngOnInit(){
-    this.productService.searchProductsEmitter.subscribe((res)=>{
-      this.products=res;
-    })
+  openProductDetail(id: number) {
+    this.route.navigate([`/product/${id}`]);
   }
 
-  openProductDetail(id:number){
-    this.route.navigate([`/product/${id}`])
-  }
-
-  openSellerStore(sellerId:number)
-  {
+  openSellerStore(sellerId: number) {
     this.route.navigate([`/store/${sellerId}`]);
   }
 }

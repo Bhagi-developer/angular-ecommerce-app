@@ -15,6 +15,14 @@
       "LName": "Makwana",
       "StoreName": "All in one",
       "id": 2
+    },
+    {
+      "Email": "bhagirathsinhmakwana2001@gmail.com",
+      "Password": "a",
+      "FName": "Hello",
+      "LName": "world",
+      "StoreName": "one and only",
+      "id": 3
     }
   ],
   "products": [
@@ -83,6 +91,40 @@
       "PaymentMethod": "Both",
       "ListProduct": true,
       "id": 6
+    },
+    {
+      "SellerId": 2,
+      "StoreName": "All in one",
+      "Name": "sport shoes",
+      "Price": 25,
+      "Category": "Sports",
+      "Quantity": 42,
+      "PaymentMethod": "Both",
+      "ListProduct": true,
+      "id": 7
+    }
+  ],
+  "user": [
+    {
+      "Email": "bhagirathsinhmakwana2001@gmail.com",
+      "Password": "1",
+      "FName": "Bhagirath",
+      "LName": "Makwana",
+      "id": 1
+    },
+    {
+      "Email": "bhagirathsinhmakwana2001@gmail.com",
+      "Password": "1",
+      "FName": "Bhagirath",
+      "LName": "Makwana",
+      "id": 2
+    },
+    {
+      "Email": "bhagirathsinhmakwana2001@gmail.com",
+      "Password": "a",
+      "FName": "Bhagirath",
+      "LName": "Makwana",
+      "id": 3
     }
   ]
 }

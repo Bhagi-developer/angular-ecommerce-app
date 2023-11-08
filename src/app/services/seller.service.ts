@@ -46,7 +46,7 @@ export class SellerService {
           localStorage.setItem('seller', JSON.stringify(response.body[0]));
           SellerService.isSellerAuthenticated = true;
           this.route.navigate(['/seller-home']);
-          this.sellerDataSubject.next(response.body[0]); // Emit the seller data
+          this.sellerDataSubject.next(response.body[0]); 
         } else {
           this.isloginError.emit(true);
         }
