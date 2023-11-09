@@ -7,6 +7,7 @@ import { ProductService } from 'src/app/services/product.service';
 import ISellerProduct, { IUser, IUserCartProduct } from 'src/app/data-type';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home',
@@ -17,13 +18,15 @@ export class HomeComponent {
   products: ISellerProduct[] | undefined = undefined;
   user: IUser | null = null;
   quantity: number = 1;
+  showProductAddedaInCartSuccess: boolean = false;
 
   constructor(
     private http: HttpClient,
     private sellerService: SellerService,
     private productService: ProductService,
     private userService: UserService,
-    private route: Router
+    private route: Router,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -55,5 +58,12 @@ export class HomeComponent {
     };
 
     this.userService.addProductInCart(data);
+
+    this._snackBar.open('Success! Card updated!', 'Dismiss', {
+      duration: 3000, // Duration in milliseconds
+      horizontalPosition: 'end', // Display on the right
+      verticalPosition: 'top', // Display at the top
+      panelClass: ['custom-snack-bar'],
+    });
   }
 }

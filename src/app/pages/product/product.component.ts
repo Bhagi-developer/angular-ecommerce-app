@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import ISellerProduct, { IUser, IUserCartProduct } from 'src/app/data-type';
 import { ProductService } from 'src/app/services/product.service';
 import { UserService } from 'src/app/services/user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-product',
@@ -20,7 +21,8 @@ export class ProductComponent {
     private router: Router,
     private route: ActivatedRoute,
     private productService: ProductService,
-    private userService: UserService
+    private userService: UserService,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -51,5 +53,11 @@ export class ProductComponent {
     };
 
     this.userService.addProductInCart(data);
+
+    this._snackBar.open('Success! Cart updated!', 'Dismiss', {
+      duration: 3000, // Duration in milliseconds
+      horizontalPosition: 'end', // Display on the right
+      verticalPosition: 'top', // Display at the top
+    });
   }
 }

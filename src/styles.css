@@ -1,40 +1,62 @@
 /* You can add global styles to this file, and also import other style files */
-button, .logo, .ul-links li{
-    cursor: pointer;
+button,
+.logo,
+.ul-links li {
+  cursor: pointer;
 }
 
-form{
-    display: flex;
-    flex-direction: column;
-    width: 64%;
-    margin: auto;
+form {
+  display: flex;
+  flex-direction: column;
+  width: 64%;
+  margin: auto;
 }
 
-form .form-group
-{
-    margin: 5px 0;
+form .form-group {
+  margin: 5px 0;
 }
 
-.required-field-label{
-    color: red;
+.required-field-label {
+  color: red;
 }
 
-.app-bg-color{
-background-color: #006a9c;
+.app-bg-color {
+  background-color: #006a9c;
 }
 
-.app-text-color{
-color: #006a9c;
+.app-text-color {
+  color: #006a9c;
 }
 
-.btn-general-height{
-    height: 36px;
+.btn-general-height {
+  height: 36px;
 }
 
-.cursor-pointer{
-    cursor: pointer;
+.cursor-pointer {
+  cursor: pointer;
 }
 
-.material-icons{
-    cursor: pointer;
+.material-icons {
+  cursor: pointer;
+}
+
+.alert {
+  text-align: center;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.custom-snack-bar {
+  background-color: #2196f3; /* Change the background color to your desired color */
+  color: #ffffff; /* Change the text color to contrast with the background */
+  border-radius: 4px; /* Adjust the border radius to your preference */
 }

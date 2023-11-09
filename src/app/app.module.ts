@@ -21,6 +21,9 @@ import { SellerStoreComponent } from './pages/seller-store/seller-store.componen
 import { UserAuthComponent } from './pages/user-auth/user-auth.component';
 import { UserCartComponent } from './pages/user-cart/user-cart.component';
 import { ScrollerComponent } from './pages/scroller/scroller.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
@@ -40,6 +43,7 @@ import { ScrollerComponent } from './pages/scroller/scroller.component';
     ScrollerComponent,
   ],
   imports: [
+    MatSnackBarModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -47,6 +51,7 @@ import { ScrollerComponent } from './pages/scroller/scroller.component';
     NgbModule,
     ModalModule.forRoot(),
     TooltipModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

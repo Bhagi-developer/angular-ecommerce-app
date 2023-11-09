@@ -1,11 +1,16 @@
+<div class="alert alert-success" role="alert" *ngIf="showProductAddedaInCartSuccess">
+  product added in your cart!!!
+</div>
 <div class="home-product-list-container">
+
   <div *ngFor="let product of products" class="home-product-container">
     <app-seller-product [product]="product" (click)="openProductDetail(product.id)"></app-seller-product>
     <div class="home-product-action-container">
       <button class="btn btn-outline-primary" (click)="openSellerStore(product.SellerId)">
         view store
       </button>
-      <button class="btn btn-outline-primary" [disabled]="!isUserAuthenticated()" (click)="addToCart(product)">add to cart</button>
+      <button class="btn btn-outline-primary" [disabled]="!isUserAuthenticated()" (click)="addToCart(product)">add to
+        cart</button>
     </div>
   </div>
 </div>

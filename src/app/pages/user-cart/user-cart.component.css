@@ -7,8 +7,16 @@
   margin: 1% 0;
 }
 
+.cart-empty-statement {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: grey;
+}
+
 .cart-products-container {
-  height: 500px; /* Adjust the height as needed */
+  height: 530px; /* Adjust the height as needed */
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;

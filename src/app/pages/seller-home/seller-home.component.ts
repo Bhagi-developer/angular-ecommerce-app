@@ -37,7 +37,6 @@ export class SellerHomeComponent {
         if (res) {
           this.products = res;
         } else {
-          console.log('no products to show');
           this.products = [];
         }
       });

@@ -12,6 +12,11 @@ export class UserService {
   private userDataSubject = new BehaviorSubject<IUser | null>(null);
   userDataEmitter = this.userDataSubject.asObservable();
 
+  private userCartSubject = new BehaviorSubject<IUserCartProduct[] | null>(
+    null
+  );
+  userCartEmitter = this.userCartSubject.asObservable();
+
   isloginError = new EventEmitter<boolean>(false);
   static isUserAuthenticated: boolean = false;
 
@@ -83,5 +88,31 @@ export class UserService {
 
   getUserCart() {
     return this.http.get<IUserCartProduct[]>('http://localhost:3000/localCart');
+  }
+
+  getUserCartProduct(userId: number | undefined, productId: number) {
+    return this.http.get<any>(
+      `http://localhost:3000/localCart?userId=${userId}&cartProduct.id=${productId}`
+    );
+  }
+
+  userCartEmitterMethod() {
+    this.userCartSubject.next(resInner);
+  }
+
+  deleteProductFromUserCart(id: number) {
+    return this.http.delete(`http://localhost:3000/localCart/${id}`);
+  }
+
+  updateProductCartQuantity(data: any, addProductQuantityConfirm: boolean) {
+    if (addProductQuantityConfirm) {
+      data.quantity = data.quantity + 1;
+    } else {
+      if (data.quantity == 0) {
+        this.deleteProductFromUserCart(data.id);
+      }
+      data.quantity = data.quantity - 1;
+    }
+    return this.http.put(`http://localhost:3000/localCart/${data.id}`, data);
   }
 }
