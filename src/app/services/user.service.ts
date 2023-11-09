@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
-import { IsellerDataType } from '../data-type';
+import { IUserCartProduct, IsellerDataType } from '../data-type';
 import { IUser } from '../data-type';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
@@ -14,6 +14,8 @@ export class UserService {
 
   isloginError = new EventEmitter<boolean>(false);
   static isUserAuthenticated: boolean = false;
+
+  user: IUser | null = null;
 
   constructor(private http: HttpClient, private router: Router) {
     let userData = localStorage.getItem('user');
@@ -32,6 +34,7 @@ export class UserService {
     let userData = localStorage.getItem('user');
     if (userData) {
       this.userDataSubject.next(JSON.parse(userData));
+      this.user = JSON.parse(userData);
     }
   }
 
@@ -51,5 +54,34 @@ export class UserService {
           this.isloginError.emit(true);
         }
       });
+  }
+
+  addProductInCart(data: IUserCartProduct) {
+    this.http
+      .get<IUserCartProduct[]>(
+        `http://localhost:3000/localCart?userId=${this.user?.id}`
+      )
+      .subscribe((res) => {
+        let currentProduct: any = res.filter((product) => {
+          return product.cartProduct.id == data.cartProduct.id;
+        });
+        if (currentProduct.length != 0) {
+          currentProduct[0].quantity = currentProduct[0].quantity + 1;
+          this.http
+            .put(
+              `http://localhost:3000/localCart/${currentProduct[0].id}`,
+              currentProduct[0]
+            )
+            .subscribe((res) => {});
+        } else {
+          this.http
+            .post('http://localhost:3000/localCart', data)
+            .subscribe((res) => {});
+        }
+      });
+  }
+
+  getUserCart() {
+    return this.http.get<IUserCartProduct[]>('http://localhost:3000/localCart');
   }
 }

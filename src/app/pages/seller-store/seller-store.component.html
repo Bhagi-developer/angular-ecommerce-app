@@ -12,7 +12,7 @@
         [storeLabelVisibility]="false"
       ></app-seller-product>
       <div class="store-product-action-container">
-        <button class="btn btn-outline-primary">add to cart</button>
+        <button class="btn btn-outline-primary" [disabled]="!isUserAuthenticated()">add to cart</button>
       </div>
     </div>
   </div>

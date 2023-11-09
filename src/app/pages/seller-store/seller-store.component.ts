@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import ISellerProduct from 'src/app/data-type';
 import { ProductService } from 'src/app/services/product.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-seller-store',
@@ -29,6 +30,10 @@ export class SellerStoreComponent {
       .subscribe((res) => {
         this.storeProducts = res;
       });
+  }
+
+  isUserAuthenticated(){
+    return UserService.isUserAuthenticated;
   }
 
   openProductDetail(id: number) {

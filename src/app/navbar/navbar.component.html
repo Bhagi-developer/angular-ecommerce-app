@@ -12,7 +12,7 @@
         </li>
         <li><a routerLink="/seller-auth" class="app-text-color">Seller</a></li>
         <li><a routerLink="/user-auth" class="app-text-color">Login</a></li>
-        <li><a class="app-text-color">Cart(0)</a></li>
+        <li><a class="app-text-color" *ngIf="user" routerLink="/user-cart">Cart</a></li>
       </ul>
 
       <ul class="ul-links" *ngSwitchCase="'user'">
@@ -21,7 +21,8 @@
         </li>
         <li><a routerLink="/seller-auth" class="app-text-color">Seller</a></li>
         <li><a class="app-text-color">{{user?.FName}}</a></li>
-        <li><a class="app-text-color" (click)="onUserLogOut()">Log out</a></li>
+        <li><a class="app-text-color" routerLink="/user-cart">Cart</a></li>
+        <!-- <li><a class="app-text-color" (click)="onUserLogOut()">Log out</a></li> -->
       </ul>
 
       <ul *ngSwitchCase="'seller'">

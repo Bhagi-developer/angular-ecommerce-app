@@ -1,0 +1,67 @@
+.cart-main-container {
+  width: 90%;
+  margin: 1% auto;
+}
+
+.navigate-home-btn-container {
+  margin: 1% 0;
+}
+
+.cart-products-container {
+  height: 500px; /* Adjust the height as needed */
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  margin: auto;
+}
+
+.cart-scroll-container {
+  /* Add some padding or other styling if desired */
+  position: relative;
+}
+
+.scroll-indicator {
+  width: 8px; /* Adjust the width of the indicator as needed */
+  background: rgba(0, 0, 0, 0.3); /* Background color of the indicator */
+  position: absolute;
+  right: 0;
+  top: 0;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.cart-products-container:hover .scroll-indicator::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  top: 0;
+  left: 0;
+  height: calc(100% / var(--scroll-ratio));
+  transition: height 0.2s;
+}
+
+.cart-product-main-action-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+  margin: auto;
+}
+
+.cart-product-action-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 20%;
+  margin: auto;
+}
+
+.cart-action-contianer {
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

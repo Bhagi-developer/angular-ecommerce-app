@@ -1,0 +1,40 @@
+<div class="cart-main-container">
+    <div class="navigate-home-btn-container">
+        <button type="button" class="btn btn-dark" routerLink="/">
+            ˂ Home
+        </button>
+    </div>
+
+    <div class="cart-products-container">
+        <div class="cart-product-container" *ngFor="let cartProdct of userCart">
+            <app-product [cartButton]="true" [productParam]="cartProdct"></app-product>
+            <div class="cart-product-main-action-container">
+                <div>
+                    Quantity- {{cartProdct.quantity}}
+                </div>
+                <div class="cart-product-action-container">
+                    <i class="material-icons">remove</i>
+                    <i class="material-icons">add</i>
+                    <i class="material-icons">delete</i>
+                </div>
+            </div>
+            <hr>
+        </div>
+
+        <!-- <div class="cart-product-container">
+            <app-product [cartButton]="true"></app-product>
+        </div>
+
+        <div class="cart-product-container">
+            <app-product [cartButton]="true"></app-product>
+        </div> -->
+    </div>
+
+    <div class="cart-details-container">
+        <p>cart amount- 1250$</p>
+    </div>
+
+    <div class="cart-action-contianer">
+        <button type="button" class="btn btn-dark">Buy now</button>
+    </div>
+</div>

@@ -1,5 +1,5 @@
 export interface IUser {
-  Id: number;
+  id: number;
   FName: string;
   LName: string;
   Email: string;
@@ -21,6 +21,12 @@ export interface ISellerSignupDataType {
   StoreName: string;
   Email: string;
   Password: string;
+}
+
+export interface IUserCartProduct {
+  userId: number|undefined;
+  cartProduct: ISellerProduct;
+  quantity: number;
 }
 
 export interface IsellerLoginDataType {

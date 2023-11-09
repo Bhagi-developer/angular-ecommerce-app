@@ -126,5 +126,87 @@
       "LName": "Makwana",
       "id": 3
     }
+  ],
+  "localCart": [
+    {
+      "userId": 1,
+      "cartProduct": {
+        "SellerId": 1,
+        "StoreName": "abc",
+        "Name": "rich dad poor dad",
+        "Price": 15,
+        "Category": "Books and Media",
+        "Quantity": 90,
+        "PaymentMethod": "Both",
+        "ListProduct": true,
+        "id": 6
+      },
+      "quantity": 6,
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "cartProduct": {
+        "SellerId": 2,
+        "StoreName": "All in one",
+        "Name": "sport shoes",
+        "Price": 25,
+        "Category": "Sports",
+        "Quantity": 42,
+        "PaymentMethod": "Both",
+        "ListProduct": true,
+        "id": 7
+      },
+      "quantity": 1,
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "cartProduct": {
+        "SellerId": 2,
+        "StoreName": "All in one",
+        "Name": "apple mobile",
+        "Price": 200,
+        "Category": "Electronics",
+        "Quantity": 32,
+        "PaymentMethod": "Both",
+        "ListProduct": true,
+        "id": 4
+      },
+      "quantity": 1,
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "cartProduct": {
+        "SellerId": 2,
+        "StoreName": "All in one",
+        "Name": "Samsung mobile",
+        "Price": 120,
+        "Category": "Electronics",
+        "Quantity": 54,
+        "PaymentMethod": "Both",
+        "ListProduct": true,
+        "id": 3
+      },
+      "quantity": 1,
+      "id": 4
+    },
+    {
+      "userId": 1,
+      "cartProduct": {
+        "SellerId": 2,
+        "StoreName": "All in one",
+        "Name": "protein Supplement",
+        "Price": 40,
+        "Category": "Health and Beauty",
+        "Quantity": 36,
+        "PaymentMethod": "Both",
+        "ListProduct": true,
+        "id": 2
+      },
+      "quantity": 3,
+      "id": 5
+    }
   ]
 }

@@ -1,7 +1,8 @@
-import { Component, numberAttribute } from '@angular/core';
+import { Component, Input, numberAttribute } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import ISellerProduct from 'src/app/data-type';
+import ISellerProduct, { IUser, IUserCartProduct } from 'src/app/data-type';
 import { ProductService } from 'src/app/services/product.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-product',
@@ -10,22 +11,45 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductComponent {
   product: ISellerProduct | null = null;
+  @Input() cartButton: boolean = false;
+  @Input() productParam: IUserCartProduct | null = null;
+  user: IUser | null = null;
+  quantity: number = 1;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private productService: ProductService
+    private productService: ProductService,
+    private userService: UserService
   ) {}
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.productService.sellerGetProduct(id).subscribe((res) => {
-      this.product = res;
-      console.log(this.product);
+    if (this.productParam) {
+      //already getting product data from parent component
+    } else {
+      //fetching produc data from http request using url parameter id
+      const id = this.route.snapshot.paramMap.get('id');
+      this.productService.sellerGetProduct(id).subscribe((res) => {
+        this.product = res;
+      });
+    }
+
+    this.userService.userDataEmitter.subscribe((res) => {
+      this.user = res;
     });
   }
 
-  openSellerStore(sellerId: number|undefined) {
+  openSellerStore(sellerId: number | undefined) {
     this.router.navigate([`/store/${sellerId}`]);
+  }
+
+  addToCart(product: ISellerProduct) {
+    const data: IUserCartProduct = {
+      userId: this.user?.id,
+      cartProduct: product,
+      quantity: this.quantity,
+    };
+
+    this.userService.addProductInCart(data);
   }
 }

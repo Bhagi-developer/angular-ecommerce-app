@@ -10,6 +10,7 @@ import { SellerUpdateProductComponent } from './pages/seller-update-product/sell
 import { ProductComponent } from './pages/product/product.component';
 import { SellerStoreComponent } from './pages/seller-store/seller-store.component';
 import { UserAuthComponent } from './pages/user-auth/user-auth.component';
+import { UserCartComponent } from './pages/user-cart/user-cart.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,11 @@ const routes: Routes = [
   {
     path: 'user-auth',
     component: UserAuthComponent,
+  },
+  {
+    path: 'user-cart',
+    component: UserCartComponent,
+    canActivate: [userAuthGuard]
   },
   {
     path: '**',

@@ -7,7 +7,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SellerAuthComponent } from './pages/seller-auth/seller-auth.component';
 import { FormsModule } from '@angular/forms';
-import {  HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { SellerHomeComponent } from './pages/seller-home/seller-home.component';
 import { NoContentComponent } from './pages/no-content/no-content.component';
 import { SellerAddProductComponent } from './pages/seller-add-product/seller-add-product.component';
@@ -19,6 +19,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ProductComponent } from './pages/product/product.component';
 import { SellerStoreComponent } from './pages/seller-store/seller-store.component';
 import { UserAuthComponent } from './pages/user-auth/user-auth.component';
+import { UserCartComponent } from './pages/user-cart/user-cart.component';
+import { ScrollerComponent } from './pages/scroller/scroller.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { UserAuthComponent } from './pages/user-auth/user-auth.component';
     SellerUpdateProductComponent,
     ProductComponent,
     SellerStoreComponent,
-    UserAuthComponent
+    UserAuthComponent,
+    UserCartComponent,
+    ScrollerComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +49,6 @@ import { UserAuthComponent } from './pages/user-auth/user-auth.component';
     TooltipModule.forRoot(),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
