@@ -11,6 +11,7 @@ import { ProductComponent } from './pages/product/product.component';
 import { SellerStoreComponent } from './pages/seller-store/seller-store.component';
 import { UserAuthComponent } from './pages/user-auth/user-auth.component';
 import { UserCartComponent } from './pages/user-cart/user-cart.component';
+import { UserOrdersComponent } from './pages/user-orders/user-orders.component';
 
 const routes: Routes = [
   {
@@ -55,13 +56,17 @@ const routes: Routes = [
     canActivate: [userAuthGuard]
   },
   {
+    path: "user-orders",
+    component: UserOrdersComponent
+  },
+  {
     path: '**',
     component: NoContentComponent,
-  },
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

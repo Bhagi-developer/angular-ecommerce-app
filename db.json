@@ -112,5 +112,22 @@
       "id": 3
     }
   ],
-  "localCart": []
+  "localCart": [
+    {
+      "userId": 1,
+      "cartProduct": {
+        "SellerId": 2,
+        "StoreName": "All in one",
+        "Name": "Samsung mobile",
+        "Price": 120,
+        "Category": "Electronics",
+        "Quantity": 54,
+        "PaymentMethod": "Both",
+        "ListProduct": true,
+        "id": 3
+      },
+      "quantity": 1,
+      "id": 1
+    }
+  ]
 }

@@ -35,11 +35,11 @@
         </div>
     </div>
 
-    <div class="cart-details-container">
-        <p>cart amount- 1250$</p>
+    <div class="cart-details-container alert alert-success" role="alert" *ngIf="calculateCartAmount()!=0">
+        <p>cart amount- ${{calculateCartAmount()}}</p>
     </div>
 
     <div class="cart-action-contianer">
-        <button type="button" class="btn btn-dark">Buy now</button>
+        <button type="button" class="btn btn-dark" (click)="buyCartProducts()">Buy now</button>
     </div>
 </div>

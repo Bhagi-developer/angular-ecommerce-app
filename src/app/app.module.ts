@@ -23,6 +23,7 @@ import { UserCartComponent } from './pages/user-cart/user-cart.component';
 import { ScrollerComponent } from './pages/scroller/scroller.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { UserOrdersComponent } from './pages/user-orders/user-orders.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     UserAuthComponent,
     UserCartComponent,
     ScrollerComponent,
+    UserOrdersComponent,
   ],
   imports: [
     MatSnackBarModule,

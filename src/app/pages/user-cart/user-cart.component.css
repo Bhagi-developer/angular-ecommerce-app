@@ -73,3 +73,8 @@
   align-items: center;
   justify-content: space-around;
 }
+
+.cart-details-container{
+  text-align: center;
+  font-size:medium;
+}

@@ -4,98 +4,50 @@
       {{ loginPage ? "User Log in" : "User Sign up" }}
     </h1>
     <br />
-    <img
-      [src]="
+    <img [src]="
         loginPage
           ? '../../../assets/imgs/user-auth-login.png'
           : '../../../assets/imgs/user-auth-signup.png'
-      "
-      alt="user"
-    />
+      " alt="user" />
   </div>
 
   <div id="seller-auth-form-container" class="seller-auth-container">
     <form #userSignUp="ngForm" (ngSubmit)="onSubmit(userSignUp)">
       <div class="form-row">
         <div class="form-group col-md-5" *ngIf="!loginPage">
-          <label for="FName"
-            >First Name<span class="required-field-label">*</span>:</label
-          >
-          <input
-            type="text"
-            id="FName"
-            class="form-control"
-            required
-            ngModel
-            name="FName"
-          />
+          <label for="FName">First Name<span class="required-field-label">*</span>:</label>
+          <input type="text" id="FName" class="form-control" required ngModel name="FName" />
         </div>
 
         <div class="form-group col-md-5" *ngIf="!loginPage">
-          <label for="LName"
-            >Last Name<span class="required-field-label">*</span>:</label
-          >
-          <input
-            type="text"
-            id="LName"
-            class="form-control"
-            required
-            ngModel
-            name="LName"
-          />
+          <label for="LName">Last Name<span class="required-field-label">*</span>:</label>
+          <input type="text" id="LName" class="form-control" required ngModel name="LName" />
         </div>
       </div>
 
       <div class="form-group">
-        <label for="Email"
-          >Email<span class="required-field-label">*</span>:</label
-        >
-        <input
-          type="email"
-          id="Email"
-          class="form-control"
-          required
-          ngModel
-          name="Email"
-        />
+        <label for="Email">Email<span class="required-field-label">*</span>:</label>
+        <input type="email" id="Email" class="form-control" required ngModel name="Email" />
       </div>
 
       <div class="form-group">
-        <label for="Password"
-          >Password<span class="required-field-label">*</span>:</label
-        >
-        <input
-          type="password"
-          id="Password"
-          class="form-control"
-          required
-          ngModel
-          name="Password"
-        />
+        <label for="Password">Password<span class="required-field-label">*</span>:</label>
+        <input type="password" id="Password" class="form-control" required ngModel name="Password" />
       </div>
 
       <div class="alert alert-danger" role="alert" *ngIf="invalidSubmission">
         Please enter all required fields in proper format!
       </div>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        *ngIf="wrongLoginCredentialSubmission"
-      >
+      <div class="alert alert-danger" role="alert" *ngIf="wrongLoginCredentialSubmission">
         wrong credentials!
       </div>
 
       <button class="btn btn-primary btn-general-height">
         {{ loginPage ? "Login" : "Sign up" }}
       </button>
-      <span
-        >{{ loginPage ? "Need an account?" : "Already have an account?" }}
-        <span
-          (click)="toggelLoginSignup()"
-          class="toggelLoginSignupLink app-text-color"
-          >{{ loginPage ? "Sign up" : "Log in" }}</span
-        ></span
-      >
+      <span>{{ loginPage ? "Need an account?" : "Already have an account?" }}
+        <span (click)="toggelLoginSignup()" class="toggelLoginSignupLink app-text-color">{{ loginPage ? "Sign up" : "Log
+          in" }}</span></span>
     </form>
   </div>
 </div>

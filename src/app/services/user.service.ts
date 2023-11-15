@@ -77,11 +77,11 @@ export class UserService {
               `http://localhost:3000/localCart/${currentProduct[0].id}`,
               currentProduct[0]
             )
-            .subscribe((res) => {});
+            .subscribe((res) => { });
         } else {
           this.http
             .post('http://localhost:3000/localCart', data)
-            .subscribe((res) => {});
+            .subscribe((res) => { });
         }
       });
   }
@@ -97,7 +97,9 @@ export class UserService {
   }
 
   userCartEmitterMethod() {
-    this.userCartSubject.next(resInner);
+    this.getUserCart().subscribe((res) => {
+      this.userCartSubject.next(res);
+    })
   }
 
   deleteProductFromUserCart(id: number) {
@@ -108,11 +110,12 @@ export class UserService {
     if (addProductQuantityConfirm) {
       data.quantity = data.quantity + 1;
     } else {
-      if (data.quantity == 0) {
-        this.deleteProductFromUserCart(data.id);
+      if (data.quantity == 1) {
+        return this.deleteProductFromUserCart(data.id);
       }
       data.quantity = data.quantity - 1;
     }
+
     return this.http.put(`http://localhost:3000/localCart/${data.id}`, data);
   }
 }
