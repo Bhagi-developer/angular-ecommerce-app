@@ -24,6 +24,7 @@ import { ScrollerComponent } from './pages/scroller/scroller.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { UserOrdersComponent } from './pages/user-orders/user-orders.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { UserOrdersComponent } from './pages/user-orders/user-orders.component';
     UserCartComponent,
     ScrollerComponent,
     UserOrdersComponent,
+    UserProfileComponent,
   ],
   imports: [
     MatSnackBarModule,

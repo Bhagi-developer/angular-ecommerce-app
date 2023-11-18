@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
-import { IUserCartProduct, IsellerDataType } from '../data-type';
+import { IUserCartProduct, IUserOrder, IsellerDataType } from '../data-type';
 import { IUser } from '../data-type';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
@@ -61,6 +61,10 @@ export class UserService {
       });
   }
 
+  userLogOut() {
+    localStorage.removeItem('user');
+  }
+
   addProductInCart(data: IUserCartProduct) {
     this.http
       .get<IUserCartProduct[]>(
@@ -117,5 +121,31 @@ export class UserService {
     }
 
     return this.http.put(`http://localhost:3000/localCart/${data.id}`, data);
+  }
+
+  userCartOrder(data: IUserCartProduct[] | null) {
+
+    const userId: number | null | undefined = data && data[0].userId;
+    const date: string = new Date().toDateString();
+    const userOrder: IUserOrder = {
+      id: null,
+      userId: userId,
+      date: date,
+      cartOrder: data
+    }
+
+    return this.http.post(`http://localhost:3000/userOrders`, userOrder);
+  }
+
+  getUserOrders() {
+    return this.http.get<IUserOrder[]>('http://localhost:3000/userOrders');
+  }
+
+  emptyCartRequest(userCart: IUserCartProduct[] | null) {
+    userCart?.forEach((cartProduct) => {
+      this.http.delete(`http://localhost:3000/localCart/${cartProduct.id}`).subscribe((res) => {
+
+      });
+    })
   }
 }

@@ -24,9 +24,17 @@ export interface ISellerSignupDataType {
 }
 
 export interface IUserCartProduct {
-  userId: number|undefined;
+  id:number|null|undefined,
+  userId: number | undefined;
   cartProduct: ISellerProduct;
   quantity: number;
+}
+
+export interface IUserOrder {
+  id: number|null,
+  userId: number | null | undefined,
+  date: string,
+  cartOrder: IUserCartProduct[] | null
 }
 
 export interface IsellerLoginDataType {

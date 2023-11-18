@@ -20,8 +20,8 @@
           <a routerLink="/" class="app-text-color" (click)="getAllHomeProducts()">Home</a>
         </li>
         <li><a routerLink="/seller-auth" class="app-text-color">Seller</a></li>
-        <li><a class="app-text-color">{{user?.FName}}</a></li>
         <li><a class="app-text-color" routerLink="/user-cart">Cart</a></li>
+        <li><a class="app-text-color" (click)="navigateUserProfile()">{{user?.FName}}</a></li>
         <!-- <li><a class="app-text-color" (click)="onUserLogOut()">Log out</a></li> -->
       </ul>
 

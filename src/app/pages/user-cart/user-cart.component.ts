@@ -30,7 +30,7 @@ export class UserCartComponent {
   deleteProductFromUserCart(userId: number | undefined, productId: number) {
     this.userService.getUserCartProduct(userId, productId).subscribe((res) => {
       this.userService
-        .deleteProductFromUserCart(res[0].id)
+        .deleteProductFromUserCart(res[0]?.id)
         .subscribe((cartProductDeleteRes) => {
           this.userService.getUserCart().subscribe((updatedCartRes) => {
             this.userCart = updatedCartRes;
@@ -82,16 +82,32 @@ export class UserCartComponent {
     return cartAmount;
   }
 
-  buyCartProducts() {
+  orderCartProducts() {
     this._snackBar.open('Order has been placed! redirecting...', 'Dismiss', {
-      duration: 3000, // Duration in milliseconds
+      duration: 2200, // Duration in milliseconds
       horizontalPosition: 'end', // Display on the right
       verticalPosition: 'top', // Display at the top
       panelClass: ['custom-snack-bar'],
     });
 
-    setTimeout(() => {
-      this.router.navigate(['/user-orders']);
-    }, 2000);
+    this.userService.userCartOrder(this.userCart)
+      .subscribe((res) => {
+        setTimeout(() => {
+          this.router.navigate(['/user-orders']);
+          this.userService.emptyCartRequest(this.userCart);
+        }, 2000);
+      });
+  }
+
+  clearCartProducts() {
+    this._snackBar.open('Captain, add some products in your cart 🦸‍♂️!', 'Dismiss', {
+      duration: 2200, // Duration in milliseconds
+      horizontalPosition: 'end', // Display on the right
+      verticalPosition: 'top', // Display at the top
+      panelClass: ['custom-snack-bar'],
+    });
+
+    this.userService.emptyCartRequest(this.userCart);
+    this.userCart = [];
   }
 }

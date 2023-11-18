@@ -47,6 +47,7 @@ export class ProductComponent {
 
   addToCart(product: ISellerProduct) {
     const data: IUserCartProduct = {
+      id:null,
       userId: this.user?.id,
       cartProduct: product,
       quantity: this.quantity,

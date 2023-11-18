@@ -1,0 +1,24 @@
+<div class="profile-main-container">
+    <div class="profile-image-container">
+        <img src="https:///source.unsplash.com/300x300/?person" alt="">
+    </div>
+    <div class="profile-details-container">
+        <div class="profile-userdata-container">
+            <p class="profile-detail-fname">First Name: {{user?.FName}}</p>
+            <p class="profile-detail-lname">Last Name: {{user?.LName}}</p>
+            <p class="profile-detail-email">Email: {{user?.Email}}</p>
+        </div>
+
+        <div class="profile-update-action-contianer profile-action-container">
+            <button type="button" class="btn btn-primary">Update Profile</button>
+            <button type="button" class="btn btn-primary">Reset Password</button>
+        </div>
+        <div class="profile-order-action-contianer profile-action-container">
+            <button type="button" class="btn btn-primary" routerLink="/user-orders">My orders</button>
+            <button type="button" class="btn btn-primary" routerLink="/user-cart">My cart</button>
+        </div>
+        <div class="profile-order-action-contianer profile-action-container">
+            <button type="button" class="btn btn-outline-primary" (click)="userLogOut()">Log out</button>
+        </div>
+    </div>
+</div>

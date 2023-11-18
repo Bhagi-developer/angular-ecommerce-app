@@ -15,6 +15,17 @@
   color: grey;
 }
 
+.cart-amount-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+}
+
+h2{
+  margin: 0;
+}
+
 .cart-products-container {
   height: 530px; /* Adjust the height as needed */
   overflow-y: auto;
@@ -72,6 +83,8 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  width: 40%;
+  margin: auto;
 }
 
 .cart-details-container{

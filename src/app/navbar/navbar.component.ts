@@ -25,7 +25,7 @@ export class NavbarComponent implements OnInit {
     private sellerService: SellerService,
     private productService: ProductService,
     private userService: UserService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.router.events
@@ -75,6 +75,10 @@ export class NavbarComponent implements OnInit {
 
   getAllHomeProducts() {
     this.productService.emitAllProducts();
+  }
+
+  navigateUserProfile() {
+    this.router.navigate(['/user-profile'])
   }
 
   searchSuggetionTrigger(event: Event) {

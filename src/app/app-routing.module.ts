@@ -12,6 +12,7 @@ import { SellerStoreComponent } from './pages/seller-store/seller-store.componen
 import { UserAuthComponent } from './pages/user-auth/user-auth.component';
 import { UserCartComponent } from './pages/user-cart/user-cart.component';
 import { UserOrdersComponent } from './pages/user-orders/user-orders.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 const routes: Routes = [
   {
@@ -58,6 +59,10 @@ const routes: Routes = [
   {
     path: "user-orders",
     component: UserOrdersComponent
+  },
+  {
+    path: "user-profile",
+    component: UserProfileComponent
   },
   {
     path: '**',

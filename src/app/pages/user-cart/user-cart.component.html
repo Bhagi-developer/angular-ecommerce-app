@@ -6,6 +6,10 @@
     </div>
 
     <div class="cart-products-container">
+        <div class="card shadow cart-amount-container" *ngIf="calculateCartAmount()!=0">
+            <h2>Cart Amount: ${{calculateCartAmount()}}</h2>
+        </div>
+
         <div *ngIf="userCart?.length==0" class="cart-empty-statement">
             <h2>Empty Cart!</h2>
         </div>
@@ -35,11 +39,11 @@
         </div>
     </div>
 
-    <div class="cart-details-container alert alert-success" role="alert" *ngIf="calculateCartAmount()!=0">
-        <p>cart amount- ${{calculateCartAmount()}}</p>
-    </div>
-
-    <div class="cart-action-contianer">
-        <button type="button" class="btn btn-dark" (click)="buyCartProducts()">Buy now</button>
+    <div class="cart-action-contianer alert alert-dark">
+        <button type="button" class="btn btn-primary" (click)="clearCartProducts()"
+            [disabled]="userCart?.length==0">Clear
+            Cart</button>
+        <button type="button" class="btn btn-primary" (click)="orderCartProducts()" [disabled]="userCart?.length==0">Order
+            now</button>
     </div>
 </div>
