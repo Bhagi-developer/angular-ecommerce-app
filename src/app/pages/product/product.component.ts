@@ -29,7 +29,7 @@ export class ProductComponent {
     if (this.productParam) {
       //already getting product data from parent component
     } else {
-      //fetching produc data from http request using url parameter id
+      //fetching product data from http request using url parameter id
       const id = this.route.snapshot.paramMap.get('id');
       this.productService.sellerGetProduct(id).subscribe((res) => {
         this.product = res;
@@ -41,13 +41,19 @@ export class ProductComponent {
     });
   }
 
-  openSellerStore(sellerId: number | undefined) {
+  openSellerStore() {
+    let sellerId: number | undefined = 1;
+    if (this.productParam) {
+      sellerId = this.productParam.cartProduct.SellerId;
+    } else {
+      sellerId = this.product?.SellerId;
+    }
     this.router.navigate([`/store/${sellerId}`]);
   }
 
   addToCart(product: ISellerProduct) {
     const data: IUserCartProduct = {
-      id:null,
+      id: null,
       userId: this.user?.id,
       cartProduct: product,
       quantity: this.quantity,

@@ -27,15 +27,6 @@
   ],
   "products": [
     {
-      "Name": "cricket bat",
-      "Price": "50",
-      "Category": "Sports",
-      "Quantity": "65",
-      "PaymentMethod": "Both",
-      "ListProduct": "",
-      "id": 1
-    },
-    {
       "SellerId": 2,
       "StoreName": "All in one",
       "Name": "Samsung mobile",
@@ -45,15 +36,6 @@
       "PaymentMethod": "Both",
       "ListProduct": true,
       "id": 3
-    },
-    {
-      "Name": "apple mobile",
-      "Price": "200",
-      "Category": "Electronics",
-      "Quantity": "32",
-      "PaymentMethod": "Both",
-      "ListProduct": "",
-      "id": 4
     },
     {
       "SellerId": 1,
@@ -87,6 +69,17 @@
       "PaymentMethod": "Both",
       "ListProduct": true,
       "id": 7
+    },
+    {
+      "SellerId": 2,
+      "StoreName": "All in one",
+      "Name": "fashion cloth",
+      "Price": 200,
+      "Category": "Fashion",
+      "Quantity": 30,
+      "PaymentMethod": "Both",
+      "ListProduct": true,
+      "id": 8
     }
   ],
   "user": [
@@ -112,7 +105,24 @@
       "id": 3
     }
   ],
-  "localCart": [],
+  "localCart": [
+    {
+      "id": 1,
+      "userId": 1,
+      "cartProduct": {
+        "SellerId": 1,
+        "StoreName": "abc",
+        "Name": "rich dad poor dad",
+        "Price": 15,
+        "Category": "Books and Media",
+        "Quantity": 90,
+        "PaymentMethod": "Both",
+        "ListProduct": true,
+        "id": 6
+      },
+      "quantity": 1
+    }
+  ],
   "userOrders": [
     {
       "id": 1,
@@ -434,6 +444,151 @@
             "id": 1
           },
           "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "userId": 1,
+      "date": "Tue Nov 21 2023",
+      "cartOrder": [
+        {
+          "id": 1,
+          "userId": 1,
+          "cartProduct": {
+            "SellerId": 2,
+            "StoreName": "All in one",
+            "Name": "Samsung mobile",
+            "Price": 120,
+            "Category": "Electronics",
+            "Quantity": 54,
+            "PaymentMethod": "Both",
+            "ListProduct": true,
+            "id": 3
+          },
+          "quantity": 3
+        },
+        {
+          "id": 2,
+          "userId": 1,
+          "cartProduct": {
+            "Name": "apple mobile",
+            "Price": "200",
+            "Category": "Electronics",
+            "Quantity": "32",
+            "PaymentMethod": "Both",
+            "ListProduct": "",
+            "id": 4
+          },
+          "quantity": 2
+        },
+        {
+          "id": 3,
+          "userId": 1,
+          "cartProduct": {
+            "Name": "cricket bat",
+            "Price": "50",
+            "Category": "Sports",
+            "Quantity": "65",
+            "PaymentMethod": "Both",
+            "ListProduct": "",
+            "id": 1
+          },
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "userId": 1,
+      "date": "Tue Nov 21 2023",
+      "cartOrder": [
+        {
+          "id": 1,
+          "userId": 1,
+          "cartProduct": {
+            "SellerId": 2,
+            "StoreName": "All in one",
+            "Name": "Samsung mobile",
+            "Price": 120,
+            "Category": "Electronics",
+            "Quantity": 54,
+            "PaymentMethod": "Both",
+            "ListProduct": true,
+            "id": 3
+          },
+          "quantity": 2
+        },
+        {
+          "id": 2,
+          "userId": 1,
+          "cartProduct": {
+            "SellerId": 2,
+            "StoreName": "All in one",
+            "Name": "fashion cloth",
+            "Price": 200,
+            "Category": "Fashion",
+            "Quantity": 30,
+            "PaymentMethod": "Both",
+            "ListProduct": true,
+            "id": 8
+          },
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "userId": 1,
+      "date": "Tue Nov 21 2023",
+      "cartOrder": [
+        {
+          "id": 1,
+          "userId": 1,
+          "cartProduct": {
+            "SellerId": 2,
+            "StoreName": "All in one",
+            "Name": "fashion cloth",
+            "Price": 200,
+            "Category": "Fashion",
+            "Quantity": 30,
+            "PaymentMethod": "Both",
+            "ListProduct": true,
+            "id": 8
+          },
+          "quantity": 1
+        },
+        {
+          "id": 2,
+          "userId": 1,
+          "cartProduct": {
+            "SellerId": 2,
+            "StoreName": "All in one",
+            "Name": "Samsung mobile",
+            "Price": 120,
+            "Category": "Electronics",
+            "Quantity": 54,
+            "PaymentMethod": "Both",
+            "ListProduct": true,
+            "id": 3
+          },
+          "quantity": 2
+        },
+        {
+          "id": 3,
+          "userId": 1,
+          "cartProduct": {
+            "SellerId": 1,
+            "StoreName": "abc",
+            "Name": "remote control car",
+            "Price": 15,
+            "Category": "Toys and Games",
+            "Quantity": 54,
+            "PaymentMethod": "Both",
+            "ListProduct": true,
+            "id": 5
+          },
+          "quantity": 2
         }
       ]
     }
