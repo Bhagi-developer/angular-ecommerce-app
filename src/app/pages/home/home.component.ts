@@ -52,7 +52,7 @@ export class HomeComponent {
 
   addToCart(product: ISellerProduct) {
     const data: IUserCartProduct = {
-      id:null,
+      id: null,
       userId: this.user?.id,
       cartProduct: product,
       quantity: this.quantity,
@@ -60,7 +60,7 @@ export class HomeComponent {
 
     this.userService.addProductInCart(data);
 
-    this._snackBar.open('Success! Card updated!', 'Dismiss', {
+    this._snackBar.open('Success! Card updated! 🎅🏼', 'Dismiss', {
       duration: 3000, // Duration in milliseconds
       horizontalPosition: 'end', // Display on the right
       verticalPosition: 'top', // Display at the top

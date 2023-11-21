@@ -61,7 +61,7 @@ export class ProductComponent {
 
     this.userService.addProductInCart(data);
 
-    this._snackBar.open('Success! Cart updated!', 'Dismiss', {
+    this._snackBar.open('Success! Cart updated! 🎅🏼', 'Dismiss', {
       duration: 3000, // Duration in milliseconds
       horizontalPosition: 'end', // Display on the right
       verticalPosition: 'top', // Display at the top

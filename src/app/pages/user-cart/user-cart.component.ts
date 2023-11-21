@@ -18,13 +18,13 @@ export class UserCartComponent {
     private userService: UserService,
     private _snackBar: MatSnackBar,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.userService.userCartEmitterMethod();
     this.userService.userCartEmitter.subscribe((res) => {
       this.userCart = res;
-    })
+    });
   }
 
   deleteProductFromUserCart(userId: number | undefined, productId: number) {
@@ -56,9 +56,11 @@ export class UserCartComponent {
     addQuantityConfirm: boolean
   ) {
     this.userService.getUserCartProduct(userId, productId).subscribe((res) => {
-      this.userService.updateProductCartQuantity(res[0], addQuantityConfirm).subscribe((res) => {
-        this.userService.userCartEmitterMethod();
-      });
+      this.userService
+        .updateProductCartQuantity(res[0], addQuantityConfirm)
+        .subscribe((res) => {
+          this.userService.userCartEmitterMethod();
+        });
     });
   }
 
@@ -68,9 +70,11 @@ export class UserCartComponent {
     addQuantityConfirm: boolean
   ) {
     this.userService.getUserCartProduct(userId, productId).subscribe((res) => {
-      this.userService.updateProductCartQuantity(res[0], addQuantityConfirm).subscribe((res) => {
-        this.userService.userCartEmitterMethod();
-      });
+      this.userService
+        .updateProductCartQuantity(res[0], addQuantityConfirm)
+        .subscribe((res) => {
+          this.userService.userCartEmitterMethod();
+        });
     });
   }
 
@@ -78,34 +82,37 @@ export class UserCartComponent {
     let cartAmount = 0;
     this.userCart?.forEach((product) => {
       cartAmount += product.cartProduct.Price * product.quantity;
-    })
+    });
     return cartAmount;
   }
 
   orderCartProducts() {
-    this._snackBar.open('Order has been placed! redirecting...', 'Dismiss', {
+    this._snackBar.open('Order has been placed! 🎅🏼redirecting...', 'Dismiss', {
       duration: 2200, // Duration in milliseconds
       horizontalPosition: 'end', // Display on the right
       verticalPosition: 'top', // Display at the top
       panelClass: ['custom-snack-bar'],
     });
 
-    this.userService.userCartOrder(this.userCart)
-      .subscribe((res) => {
-        setTimeout(() => {
-          this.router.navigate(['/user-orders']);
-          this.userService.emptyCartRequest(this.userCart);
-        }, 2000);
-      });
+    this.userService.userCartOrder(this.userCart).subscribe((res) => {
+      setTimeout(() => {
+        this.router.navigate(['/user-orders']);
+        this.userService.emptyCartRequest(this.userCart);
+      }, 2000);
+    });
   }
 
   clearCartProducts() {
-    this._snackBar.open('Captain, add some products in your cart 🦸‍♂️!', 'Dismiss', {
-      duration: 2200, // Duration in milliseconds
-      horizontalPosition: 'end', // Display on the right
-      verticalPosition: 'top', // Display at the top
-      panelClass: ['custom-snack-bar'],
-    });
+    this._snackBar.open(
+      'Captain, add some products in your cart! 🦸‍♂️',
+      'Dismiss',
+      {
+        duration: 2200, // Duration in milliseconds
+        horizontalPosition: 'end', // Display on the right
+        verticalPosition: 'top', // Display at the top
+        panelClass: ['custom-snack-bar'],
+      }
+    );
 
     this.userService.emptyCartRequest(this.userCart);
     this.userCart = [];

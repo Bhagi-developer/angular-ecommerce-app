@@ -3,15 +3,16 @@ import { Injectable } from '@angular/core';
 import ISellerProduct, { IsellerDataType } from '../data-type';
 import { SellerService } from './seller.service';
 import { BehaviorSubject } from 'rxjs';
+import { SelectorContext } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
   seller: IsellerDataType | null = null;
-  private searchProductsSubject = new BehaviorSubject<ISellerProduct[] | undefined>(
-    undefined
-  );
+  private searchProductsSubject = new BehaviorSubject<
+    ISellerProduct[] | undefined
+  >(undefined);
   searchProductsEmitter = this.searchProductsSubject.asObservable();
 
   constructor(private http: HttpClient, private sellerService: SellerService) {}
@@ -28,19 +29,14 @@ export class ProductService {
   }
 
   //To get all products of a seller
-  sellerGetProducts() {
-    let sellerData = localStorage.getItem('seller');
-    if (sellerData) {
-      this.seller = JSON.parse(sellerData);
-    }
-
+  sellerGetProducts(sellerId: number | undefined) {
     return this.http.get<ISellerProduct[]>(
-      `http://localhost:3000/products?SellerId=${this.seller?.id}`
+      `http://localhost:3000/products?SellerId=${sellerId}`
     );
   }
 
   //To get all products of seller by id
-  sellerGetProductsById(id:string){
+  sellerGetProductsById(id: string) {
     return this.http.get<ISellerProduct[]>(
       `http://localhost:3000/products?SellerId=${id}`
     );
@@ -63,13 +59,27 @@ export class ProductService {
   }
 
   //seller update product
-  sellerUpdateProduct(id: number | undefined, data: ISellerProduct) {
+  sellerUpdateProduct(id: number | undefined, data: ISellerProduct | null) {
     return this.http.put(`http://localhost:3000/products/${id}`, data);
   }
 
   //get all products
   getAllProducts() {
     return this.http.get<ISellerProduct[]>('http://localhost:3000/products');
+  }
+
+  //get listed products
+  getListedProducts() {
+    return this.http.get<ISellerProduct[]>(
+      `http://localhost:3000/products?ListProduct=true`
+    );
+  }
+
+  //get listed products
+  getUnListedProducts() {
+    return this.http.get<ISellerProduct[]>(
+      `http://localhost:3000/products?ListProduct=false`
+    );
   }
 
   //get search suggetions
@@ -79,15 +89,15 @@ export class ProductService {
     );
   }
 
-  //all produts emitter
-  emitAllProducts(){
-    this.getAllProducts().subscribe((res)=>{
+  //all produts emitter(which sends only listed products)
+  emitAllProducts() {
+    this.getListedProducts().subscribe((res) => {
       this.searchProductsSubject.next(res);
-    })
+    });
   }
 
   //filter products from search emitter
-  emitSearchProducts(products:ISellerProduct[]|undefined) {
+  emitSearchProducts(products: ISellerProduct[] | undefined) {
     this.searchProductsSubject.next(products);
   }
 }

@@ -1,0 +1,38 @@
+<div class="update-profile-main-container">
+    <div class="update-profile-image-container">
+        <img src="https:///source.unsplash.com/300x300/?person" alt="">
+    </div>
+    <div class="update-profile-form-container">
+        <form #userUpdateProfile="ngForm" (ngSubmit)="onSubmit(userUpdateProfile)">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="FName">First Name:</label>
+                    <input type="text" id="FName" class="form-control" ngModel name="FName" />
+                </div>
+
+                <div class="form-group">
+                    <label for="LName">Last Name:</label>
+                    <input type="text" id="LName" class="form-control" ngModel name="LName" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Email">Email:</label>
+                <input type="email" id="Email" class="form-control" ngModel name="Email"
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
+            </div>
+
+            <div class="alert alert-danger" role="alert" *ngIf="invalidForm">
+                Please enter valid details
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="emptyForm">
+                Please enter at lease 1 field
+            </div>
+
+            <div class="update-profile-update-action-contianer update-profile-action-container">
+                <button type="button" class="btn btn-primary" type="submit">Update Profile</button>
+                <button type="button" class="btn btn-outline-primary" routerLink="/user-profile">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

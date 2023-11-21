@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IUserCartProduct, IUserOrder } from 'src/app/data-type';
+import { IUser, IUserCartProduct, IUserOrder } from 'src/app/data-type';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,6 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserOrdersComponent {
   userOrders: IUserOrder[] | null = null;
+  user: IUser | null = null;
 
   constructor(
     private router: ActivatedRoute,
@@ -17,8 +18,12 @@ export class UserOrdersComponent {
   ) {}
 
   ngOnInit() {
-    this.userService.getUserOrders().subscribe((res) => {
-      this.userOrders = res;
+    this.userService.userDataEmitter.subscribe((res) => {
+      this.user = res;
+
+      this.userService.getUserOrders(this.user?.id).subscribe((resInner) => {
+        this.userOrders = resInner;
+      });
     });
   }
 

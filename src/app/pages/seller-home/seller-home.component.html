@@ -13,11 +13,22 @@
     </h3>
   </div>
 
-  <div class="store-product-list-container">
-    <div *ngFor="let product of products" class="seller-product-container">
+  <h1 class="alert alert-secondary product-availibilty-alert">Listed Products</h1>
+  <div class="store-available-product-list-container store-product-list-container">
+    <div *ngFor="let product of listedProducts" class="seller-product-container">
       <app-seller-product [product]="product" [editAccess]="true"
         (updateProducts)="updateProducts($event)"></app-seller-product>
     </div>
   </div>
+  <p class="no-list" *ngIf="listedProducts?.length==0">No Listed Products</p>
+
+  <h1 class="alert alert-secondary product-availibilty-alert">UnListed Products</h1>
+  <div class="store-unavailable-product-list-container store-product-list-container">
+    <div *ngFor="let product of unListedProducts" class="seller-product-container">
+      <app-seller-product [product]="product" [editAccess]="true"
+        (updateProducts)="updateProducts($event)"></app-seller-product>
+    </div>
+  </div>
+  <p class="no-list" *ngIf="unListedProducts?.length==0">No UnListed Products</p>
 
 </div>

@@ -1,7 +1,11 @@
 <div class="container">
     <h1 class="mt-5 mb-4">Your Orders</h1>
+    <div *ngIf="userOrders?.length==0">
+        <h3 style="color: grey;">No orders yet.</h3>
+        <button class="btn btn-primary" routerLink="/">Explore Products</button>
+    </div>
 
-    <div class="card order-card mb-4 cursor-pointer" *ngFor="let userOrder of userOrders">
+    <div class="card order-card mb-4 cursor-pointer" *ngFor="let userOrder of userOrders?.reverse()">
         <div class="card-header">
             <h5 class="mb-0">Order {{userOrder.id}}</h5>
         </div>
@@ -12,8 +16,9 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item d-flex justify-content-between align-items-center"
                 *ngFor="let product of userOrder.cartOrder">
-                {{product.cartProduct.Name}} - ordered {{product.quantity}} items
-                <span class="">product price- ${{product.cartProduct.Price}}</span>
+                {{product.cartProduct.Name}} ({{product.cartProduct.Category}}) - ordered
+                {{product.quantity}} items
+                <span>product price- ${{product.cartProduct.Price}}</span>
             </li>
         </ul>
     </div>

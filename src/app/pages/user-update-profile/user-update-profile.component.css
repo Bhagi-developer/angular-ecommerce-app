@@ -1,0 +1,35 @@
+.update-profile-main-container {
+  display: flex;
+  /* height: 700px; */
+  width: 70%;
+  margin: 20px auto;
+  justify-content: space-around;
+}
+
+.update-profile-image-container {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.update-profile-image-container img {
+  height: 400px;
+  border-radius: 50%;
+}
+
+.update-profile-form-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  /* text-align: center; */
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.update-profile-action-container {
+  margin: 10px auto;
+  width: 77%;
+  display: flex;
+  justify-content: space-around;
+}

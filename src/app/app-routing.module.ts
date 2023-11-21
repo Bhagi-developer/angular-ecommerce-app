@@ -13,6 +13,8 @@ import { UserAuthComponent } from './pages/user-auth/user-auth.component';
 import { UserCartComponent } from './pages/user-cart/user-cart.component';
 import { UserOrdersComponent } from './pages/user-orders/user-orders.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { UserUpdateProfileComponent } from './pages/user-update-profile/user-update-profile.component';
+import { UserResetPasswordComponent } from './pages/user-reset-password/user-reset-password.component';
 
 const routes: Routes = [
   {
@@ -54,24 +56,36 @@ const routes: Routes = [
   {
     path: 'user-cart',
     component: UserCartComponent,
-    canActivate: [userAuthGuard]
+    canActivate: [userAuthGuard],
   },
   {
-    path: "user-orders",
-    component: UserOrdersComponent
+    path: 'user-orders',
+    component: UserOrdersComponent,
+    canActivate: [userAuthGuard],
   },
   {
-    path: "user-profile",
-    component: UserProfileComponent
+    path: 'user-profile',
+    component: UserProfileComponent,
+    canActivate: [userAuthGuard],
+  },
+  {
+    path: 'user-update-profile',
+    component: UserUpdateProfileComponent,
+    canActivate: [userAuthGuard],
+  },
+  {
+    path: 'user-reset-password',
+    component: UserResetPasswordComponent,
+    canActivate: [userAuthGuard],
   },
   {
     path: '**',
     component: NoContentComponent,
-  }
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

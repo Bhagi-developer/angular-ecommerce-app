@@ -4,6 +4,8 @@ import { IUserCartProduct, IUserOrder, IsellerDataType } from '../data-type';
 import { IUser } from '../data-type';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
+import { NgFor } from '@angular/common';
+import { NgForm } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -81,11 +83,11 @@ export class UserService {
               `http://localhost:3000/localCart/${currentProduct[0].id}`,
               currentProduct[0]
             )
-            .subscribe((res) => { });
+            .subscribe((res) => {});
         } else {
           this.http
             .post('http://localhost:3000/localCart', data)
-            .subscribe((res) => { });
+            .subscribe((res) => {});
         }
       });
   }
@@ -103,7 +105,7 @@ export class UserService {
   userCartEmitterMethod() {
     this.getUserCart().subscribe((res) => {
       this.userCartSubject.next(res);
-    })
+    });
   }
 
   deleteProductFromUserCart(id: number) {
@@ -124,28 +126,37 @@ export class UserService {
   }
 
   userCartOrder(data: IUserCartProduct[] | null) {
-
     const userId: number | null | undefined = data && data[0].userId;
     const date: string = new Date().toDateString();
     const userOrder: IUserOrder = {
       id: null,
       userId: userId,
       date: date,
-      cartOrder: data
-    }
+      cartOrder: data,
+    };
 
     return this.http.post(`http://localhost:3000/userOrders`, userOrder);
   }
 
-  getUserOrders() {
-    return this.http.get<IUserOrder[]>('http://localhost:3000/userOrders');
+  getUserOrders(userId: number | undefined) {
+    return this.http.get<IUserOrder[]>(
+      `http://localhost:3000/userOrders?userId=${userId}`
+    );
   }
 
   emptyCartRequest(userCart: IUserCartProduct[] | null) {
     userCart?.forEach((cartProduct) => {
-      this.http.delete(`http://localhost:3000/localCart/${cartProduct.id}`).subscribe((res) => {
+      this.http
+        .delete(`http://localhost:3000/localCart/${cartProduct.id}`)
+        .subscribe((res) => {});
+    });
+  }
 
-      });
-    })
+  updateUserProfile(userId: string | undefined, data: IUser | null) {
+    return this.http.put(`http://localhost:3000/user/${userId}`, data);
+  }
+
+  resetUserPassword(user: IUser) {
+    return this.http.put(`http://localhost:3000/user/${user.id}`, user);
   }
 }

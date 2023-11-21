@@ -1,9 +1,8 @@
 /* Styling for the order card */
 .order-card {
-    transition: box-shadow 0.3s;
-  }
-  
-  .order-card:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
+  transition: box-shadow 0.3s;
+}
+
+.order-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

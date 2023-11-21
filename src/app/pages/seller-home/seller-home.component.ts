@@ -12,19 +12,33 @@ import { ProductService } from 'src/app/services/product.service';
 export class SellerHomeComponent {
   seller: IsellerDataType | null = null;
   products: ISellerProduct[] | null = null;
+  listedProducts: ISellerProduct[] | undefined = undefined;
+  unListedProducts: ISellerProduct[] | undefined = undefined;
 
   data: any = [];
 
-  constructor(private sellerService: SellerService, private http: HttpClient, private productService:ProductService) {
+  constructor(
+    private sellerService: SellerService,
+    private http: HttpClient,
+    private productService: ProductService
+  ) {
     this.sellerService.sellerDataEmitter.subscribe((res) => {
       this.seller = res;
     });
   }
 
   ngOnInit() {
-    this.productService.sellerGetProducts().subscribe((res) => {
+    this.productService.sellerGetProducts(this.seller?.id).subscribe((res) => {
       if (res) {
         this.products = res;
+
+        this.listedProducts = this.products?.filter((product) => {
+          return product.ListProduct;
+        });
+
+        this.unListedProducts = this.products?.filter((product) => {
+          return !product.ListProduct;
+        });
       } else {
         this.products = [];
       }
@@ -33,13 +47,15 @@ export class SellerHomeComponent {
 
   updateProducts(confirm: boolean) {
     if (confirm) {
-      this.productService.sellerGetProducts().subscribe((res) => {
-        if (res) {
-          this.products = res;
-        } else {
-          this.products = [];
-        }
-      });
+      this.productService
+        .sellerGetProducts(this.seller?.id)
+        .subscribe((res) => {
+          if (res) {
+            this.products = res;
+          } else {
+            this.products = [];
+          }
+        });
     }
   }
 }

@@ -22,3 +22,13 @@
 .seller-product-container:hover {
   transform: scale(1.05);
 }
+
+.product-availibilty-alert {
+  width: 40%;
+  margin: auto;
+}
+
+.no-list {
+  text-align: center;
+  color: grey;
+}

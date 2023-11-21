@@ -1,5 +1,7 @@
 import { Component, ComponentFactoryResolver } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { IsellerDataType } from 'src/app/data-type';
 import { ProductService } from 'src/app/services/product.service';
 import { SellerService } from 'src/app/services/seller.service';
@@ -18,7 +20,9 @@ export class SellerAddProductComponent {
 
   constructor(
     private sellerService: SellerService,
-    private productService: ProductService
+    private productService: ProductService,
+    private _snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -32,14 +36,25 @@ export class SellerAddProductComponent {
       this.invalidSubmission = false;
 
       this.productService
-        .sellerAddProduct({ SellerId: this.seller?.id, StoreName:this.seller?.StoreName, ...productDetail.value })
+        .sellerAddProduct({
+          SellerId: this.seller?.id,
+          StoreName: this.seller?.StoreName,
+          ...productDetail.value,
+        })
         .subscribe((res) => {
           if (res) {
             productDetail.reset();
-            this.addProductSuccess = true;
-            setTimeout(() => {
-              this.addProductSuccess = false;
-            }, 2000);
+            this._snackBar.open(
+              'Success! Product added in store! ✌🏼',
+              'Dismiss',
+              {
+                duration: 3000, // Duration in milliseconds
+                horizontalPosition: 'end', // Display on the right
+                verticalPosition: 'top', // Display at the top
+                panelClass: ['custom-snack-bar'],
+              }
+            );
+            this.router.navigate(['/seller-home']);
           }
         });
     } else {
