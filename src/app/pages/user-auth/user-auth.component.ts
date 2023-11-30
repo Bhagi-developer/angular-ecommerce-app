@@ -14,6 +14,9 @@ export class UserAuthComponent {
   invalidSubmission: boolean = false;
   wrongLoginCredentialSubmission: boolean = false;
   emailPattern: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  passwordPattern: RegExp =
+    /^(?=.*[0-9])(?=.*[!@#$%^&*()_+|~\-={}\[\]:;"'<>,.?\\/])(?=.*[a-zA-Z]).{8,}$/;
+  weakPasswordWarn: boolean = false;
 
   constructor(private userService: UserService, private router: Router) {}
 
@@ -23,18 +26,24 @@ export class UserAuthComponent {
     if (form.invalid || !this.emailPattern.test(form.value.Email)) {
       this.invalidSubmission = true;
     } else {
+      this.weakPasswordWarn = false;
       if (this.loginPage) {
         this.userService.userLogIn(form.value);
         this.userService.isloginError.subscribe((res) => {
           this.wrongLoginCredentialSubmission = true;
         });
       } else {
-        this.userService.userSignUp(form.value).subscribe((res) => {
-          if (res) {
-            form.reset();
-            this.loginPage = true;
-          }
-        });
+        if (this.passwordPattern.test(form.value.Password)) {
+          this.weakPasswordWarn = false;
+          this.userService.userSignUp(form.value).subscribe((res) => {
+            if (res) {
+              form.reset();
+              this.loginPage = true;
+            }
+          });
+        } else {
+          this.weakPasswordWarn = true;
+        }
       }
     }
   }

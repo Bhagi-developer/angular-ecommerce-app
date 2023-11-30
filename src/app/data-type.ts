@@ -6,6 +6,12 @@ export interface IUser {
   Password: string;
 }
 
+export interface IUserWishList {
+  id: number;
+  userId: number;
+  products: ISellerProduct[] | null;
+}
+
 export interface IsellerDataType {
   FName: string;
   LName: string;
@@ -24,17 +30,17 @@ export interface ISellerSignupDataType {
 }
 
 export interface IUserCartProduct {
-  id:number|null|undefined,
+  id: number | null | undefined;
   userId: number | undefined;
   cartProduct: ISellerProduct;
   quantity: number;
 }
 
 export interface IUserOrder {
-  id: number|null,
-  userId: number | null | undefined,
-  date: string,
-  cartOrder: IUserCartProduct[] | null
+  id: number | null;
+  userId: number | null | undefined;
+  date: string;
+  cartOrder: IUserCartProduct[] | null;
 }
 
 export interface IsellerLoginDataType {

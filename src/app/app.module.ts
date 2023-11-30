@@ -27,6 +27,7 @@ import { UserOrdersComponent } from './pages/user-orders/user-orders.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { UserUpdateProfileComponent } from './pages/user-update-profile/user-update-profile.component';
 import { UserResetPasswordComponent } from './pages/user-reset-password/user-reset-password.component';
+import { UserWishlistComponent } from './pages/user-wishlist/user-wishlist.component';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { UserResetPasswordComponent } from './pages/user-reset-password/user-res
     UserProfileComponent,
     UserUpdateProfileComponent,
     UserResetPasswordComponent,
+    UserWishlistComponent,
   ],
   imports: [
     MatSnackBarModule,

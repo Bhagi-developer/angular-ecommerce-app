@@ -114,13 +114,56 @@
     },
     {
       "Email": "bhagirathsinhmakwana@gmail.com",
-      "Password": "1",
+      "Password": "abc@bhagi@123",
       "FName": "Bhagirath2",
       "LName": "Makwana",
       "id": 2
+    },
+    {
+      "Email": "bhagirath@gmail.com",
+      "Password": "bhagi@abc@123",
+      "FName": "Bhagirath",
+      "LName": "Makwana",
+      "id": 3
     }
   ],
-  "localCart": [],
+  "userWishListProducts":[
+
+  ],
+  "localCart": [
+    {
+      "id": 1,
+      "userId": 3,
+      "cartProduct": {
+        "SellerId": 2,
+        "StoreName": "All in one",
+        "Name": "sport product",
+        "Price": 54,
+        "Category": "Sports",
+        "Quantity": 65,
+        "PaymentMethod": "Both",
+        "ListProduct": true,
+        "id": 7
+      },
+      "quantity": 11
+    },
+    {
+      "id": 2,
+      "userId": 3,
+      "cartProduct": {
+        "SellerId": 2,
+        "StoreName": "All in one",
+        "Name": "sport product",
+        "Price": 54,
+        "Category": "Sports",
+        "Quantity": 65,
+        "PaymentMethod": "Both",
+        "ListProduct": true,
+        "id": 7
+      },
+      "quantity": 1
+    }
+  ],
   "userOrders": [
     {
       "id": 1,
@@ -796,6 +839,45 @@
             "id": 7
           },
           "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "userId": 2,
+      "date": "Thu Nov 30 2023",
+      "cartOrder": [
+        {
+          "id": 1,
+          "userId": 2,
+          "cartProduct": {
+            "SellerId": 2,
+            "StoreName": "All in one",
+            "Name": "sport product",
+            "Price": 54,
+            "Category": "Sports",
+            "Quantity": 65,
+            "PaymentMethod": "Both",
+            "ListProduct": true,
+            "id": 7
+          },
+          "quantity": 2
+        },
+        {
+          "id": 2,
+          "userId": 2,
+          "cartProduct": {
+            "SellerId": 1,
+            "StoreName": "abc",
+            "Name": "rich dad poor dad",
+            "Price": 15,
+            "Category": "Books and Media",
+            "Quantity": 90,
+            "PaymentMethod": "Both",
+            "ListProduct": true,
+            "id": 6
+          },
+          "quantity": 2
         }
       ]
     }

@@ -1,6 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
-import { IUserCartProduct, IUserOrder, IsellerDataType } from '../data-type';
+import {
+  IUserCartProduct,
+  IUserOrder,
+  IUserWishList,
+  IsellerDataType,
+} from '../data-type';
 import { IUser } from '../data-type';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
@@ -158,5 +163,18 @@ export class UserService {
 
   resetUserPassword(user: IUser) {
     return this.http.put(`http://localhost:3000/user/${user.id}`, user);
+  }
+
+  getUserWishlist(userId: number | undefined) {
+    return this.http.get<IUserWishList>(
+      `http://localhost:3000/userWishListProducts?userId=${userId}`
+    );
+  }
+
+  updateUserWishList(userWishList: IUserWishList | undefined) {
+    this.http.put(
+      `localhost:3000/userWishListProducts?userId=${this.user?.id}`,
+      userWishList
+    );
   }
 }

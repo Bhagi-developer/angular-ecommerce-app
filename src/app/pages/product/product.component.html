@@ -3,6 +3,11 @@
     <img [src]="'https:///source.unsplash.com/300x300/?' + product?.Name" alt="" *ngSwitchCase="false" />
     <img [src]="'https:///source.unsplash.com/300x300/?' + productParam?.cartProduct?.Name" alt=""
       *ngSwitchCase="true" />
+
+    <div class="wishlist-action-container">
+      <i class="material-icons favorite-icon white-color" (click)="handleProductWishlist($event)">favorite</i>
+    </div>
+
   </div>
   <div class="product-details-container">
     <div class="product-name-conteiner" [ngSwitch]="cartButton">

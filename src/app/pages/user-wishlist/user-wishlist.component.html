@@ -1,0 +1,23 @@
+<div class="container mt-4">
+    <h2>My Wishlist</h2>
+    <div>
+        <div class="row user-wishlist-main-container">
+            <div class="col-md-4 mb-3 user-wishlist-product-container" *ngFor="let product of userWishList?.products">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Hello world</h5>
+                        <p class="card-text">Hello world</p>
+                        <p class="card-text">Price: Hello world</p>
+                        <div class="user-wishlist-product-action-container">
+                            <button class="btn btn-primary">Details</button>
+                            <button class="btn btn-outline-danger">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #noWishlist>
+        <p>You don't have any items in your wishlist.</p>
+    </ng-template>
+</div>

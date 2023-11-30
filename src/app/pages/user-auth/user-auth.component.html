@@ -42,6 +42,11 @@
         wrong credentials!
       </div>
 
+      <div class="alert alert-danger" role="alert" *ngIf="weakPasswordWarn">
+        Password Requirements: At least 8 characters with at least 1 alphabet, 1 special character, and 1
+        number.
+      </div>
+
       <button class="btn btn-primary btn-general-height" type="submit">
         {{ loginPage ? "Login" : "Sign up" }}
       </button>

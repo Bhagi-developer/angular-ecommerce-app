@@ -1,6 +1,10 @@
 import { Component, Input, numberAttribute } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import ISellerProduct, { IUser, IUserCartProduct } from 'src/app/data-type';
+import ISellerProduct, {
+  IUser,
+  IUserCartProduct,
+  IUserWishList,
+} from 'src/app/data-type';
 import { ProductService } from 'src/app/services/product.service';
 import { UserService } from 'src/app/services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -16,6 +20,8 @@ export class ProductComponent {
   @Input() productParam: IUserCartProduct | null = null;
   user: IUser | null = null;
   quantity: number = 1;
+  productWishListed: boolean = false;
+  userWishList: IUserWishList | undefined = undefined;
 
   constructor(
     private router: Router,
@@ -38,6 +44,12 @@ export class ProductComponent {
 
     this.userService.userDataEmitter.subscribe((res) => {
       this.user = res;
+
+      this.userService
+        .getUserWishlist(this.user?.id)
+        .subscribe((userWishList) => {
+          this.userWishList = userWishList;
+        });
     });
   }
 
@@ -66,5 +78,29 @@ export class ProductComponent {
       horizontalPosition: 'end', // Display on the right
       verticalPosition: 'top', // Display at the top
     });
+  }
+
+  handleProductWishlist(e: Event) {
+    const wishListIcon = e.currentTarget as HTMLElement;
+
+    if (this.productWishListed) {
+      wishListIcon.classList.add('white-color');
+      wishListIcon.classList.remove('pink-color');
+
+      if (this.userWishList?.products) {
+        this.userWishList.products = this.userWishList?.products.filter(
+          (p) => p.id != this.product?.id
+        );
+      }
+    } else {
+      wishListIcon.classList.add('pink-color');
+      wishListIcon.classList.remove('white-color');
+      if (this.product) {
+        this.userWishList?.products?.push(this.product);
+      }
+    }
+
+    this.userService.updateUserWishList(this.userWishList);
+    this.productWishListed = !this.productWishListed;
   }
 }
