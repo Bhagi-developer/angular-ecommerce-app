@@ -1,23 +1,29 @@
 <div class="container mt-4">
     <h2>My Wishlist</h2>
-    <div>
-        <div class="row user-wishlist-main-container">
-            <div class="col-md-4 mb-3 user-wishlist-product-container" *ngFor="let product of userWishList?.products">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Hello world</h5>
-                        <p class="card-text">Hello world</p>
-                        <p class="card-text">Price: Hello world</p>
-                        <div class="user-wishlist-product-action-container">
-                            <button class="btn btn-primary">Details</button>
-                            <button class="btn btn-outline-danger">Remove</button>
-                        </div>
+    <div class="row user-wishlist-main-container"
+        *ngIf="userWishList && userWishList.products && userWishList.products.length > 0; else noWishlist">
+        <div class="col-md-3 mb-3 user-wishlist-product-container" *ngFor="let product of userWishList?.products">
+            <div class="card">
+                <div class="card-body">
+                    <div class="image-container">
+                        <img [src]="'https:///source.unsplash.com/300x300/?' + product?.Name" alt="product">
+                        <p class="seller-lable">
+                            {{product.Quantity}} product left
+                        </p>
+                    </div>
+                    <h3 class="card-title">Name: {{product.Name}}</h3>
+                    <p class="card-text">Price: {{product.Price}}</p>
+                    <p class="card-text">From {{product.StoreName}} Store</p>
+                    <div class="user-wishlist-product-action-container">
+                        <button class="btn btn-primary" routerLink="/product/{{product.id}}">Details</button>
+                        <button class="btn btn-outline-danger"
+                            (click)="handleProductRemoveFromWishlist(user?.id, product)">Remove</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <ng-template #noWishlist>
-        <p>You don't have any items in your wishlist.</p>
+        <p class="alert alert-secondary no-wishlist">You don't have any items in your wishlist.</p>
     </ng-template>
 </div>

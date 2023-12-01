@@ -1,5 +1,27 @@
 .user-wishlist-product-action-container {
   display: flex;
-  width: 50%;
+  width: 60%;
   justify-content: space-between;
+}
+.user-wishlist-product-container img {
+  width: 100%;
+}
+
+.image-container {
+  position: relative;
+}
+
+.seller-lable {
+  background-color: rgb(189, 189, 189);
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  left: 0%;
+  padding: 7px;
+  border-radius: 5%;
+  z-index: 0;
+}
+
+.no-wishlist {
+  width: 26%;
 }

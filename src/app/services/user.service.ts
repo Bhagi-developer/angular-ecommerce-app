@@ -186,9 +186,7 @@ export class UserService {
           `http://localhost:3000/wishListOfUsers/${userWishList[0].id}`,
           userWishList[0]
         )
-        .subscribe((res) => {
-          console.log('product added in user wishlist');
-        });
+        .subscribe((res) => {});
     });
   }
 
@@ -207,9 +205,7 @@ export class UserService {
           `http://localhost:3000/wishListOfUsers/${userWishList[0].id}`,
           userWishList[0]
         )
-        .subscribe((res) => {
-          console.log('product deleted from user wishlist');
-        });
+        .subscribe((res) => {});
     });
   }
 }
