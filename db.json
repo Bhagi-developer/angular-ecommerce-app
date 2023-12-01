@@ -26,83 +26,6 @@
     }
   ],
   "products": [
-    {
-      "SellerId": 1,
-      "StoreName": "abc",
-      "Name": "remote control car",
-      "Price": 15,
-      "Category": "Toys and Games",
-      "Quantity": 54,
-      "PaymentMethod": "Both",
-      "ListProduct": true,
-      "id": 5
-    },
-    {
-      "SellerId": 1,
-      "StoreName": "abc",
-      "Name": "rich dad poor dad",
-      "Price": 15,
-      "Category": "Books and Media",
-      "Quantity": 90,
-      "PaymentMethod": "Both",
-      "ListProduct": true,
-      "id": 6
-    },
-    {
-      "SellerId": 2,
-      "StoreName": "All in one",
-      "Name": "sport product",
-      "Price": 54,
-      "Category": "Sports",
-      "Quantity": 65,
-      "PaymentMethod": "Both",
-      "ListProduct": true,
-      "id": 7
-    },
-    {
-      "SellerId": 2,
-      "StoreName": "All in one",
-      "Name": "sport shoes",
-      "Price": "54",
-      "Category": "Sports",
-      "Quantity": "54",
-      "PaymentMethod": "Both",
-      "ListProduct": true,
-      "id": 8
-    },
-    {
-      "SellerId": 2,
-      "StoreName": "All in one",
-      "Name": "sofa",
-      "Price": 54,
-      "Category": "Home and Furniture",
-      "Quantity": 76,
-      "PaymentMethod": "Both",
-      "ListProduct": true,
-      "id": 9
-    },
-    {
-      "SellerId": 2,
-      "StoreName": "All in one",
-      "Name": "earphones",
-      "Price": "23",
-      "Category": "Electronics",
-      "Quantity": "98",
-      "PaymentMethod": "Both",
-      "ListProduct": false,
-      "id": 10
-    },
-    {
-      "SellerId": 2,
-      "StoreName": "All in one",
-      "Name": "books",
-      "Price": "50",
-      "Category": "Books and Media",
-      "Quantity": "110",
-      "PaymentMethod": "Both",
-      "ListProduct": false,
-      "id": 11
-    }
   ],
   "user": [
     {
@@ -127,43 +50,47 @@
       "id": 3
     }
   ],
-  "userWishListProducts":[
-
-  ],
-  "localCart": [
+  "wishListOfUsers": [
     {
       "id": 1,
-      "userId": 3,
-      "cartProduct": {
-        "SellerId": 2,
-        "StoreName": "All in one",
-        "Name": "sport product",
-        "Price": 54,
-        "Category": "Sports",
-        "Quantity": 65,
-        "PaymentMethod": "Both",
-        "ListProduct": true,
-        "id": 7
-      },
-      "quantity": 11
+      "userId": 1,
+      "products": [
+        {
+          "SellerId": 2,
+          "StoreName": "All in one",
+          "Name": "sport shoes",
+          "Price": "54",
+          "Category": "Sports",
+          "Quantity": "54",
+          "PaymentMethod": "Both",
+          "ListProduct": true,
+          "id": 8
+        },
+        {
+          "SellerId": 2,
+          "StoreName": "All in one",
+          "Name": "sport product",
+          "Price": 54,
+          "Category": "Sports",
+          "Quantity": 65,
+          "PaymentMethod": "Both",
+          "ListProduct": true,
+          "id": 7
+        }
+      ]
     },
     {
       "id": 2,
+      "userId": 2,
+      "products": []
+    },
+    {
+      "id": 3,
       "userId": 3,
-      "cartProduct": {
-        "SellerId": 2,
-        "StoreName": "All in one",
-        "Name": "sport product",
-        "Price": 54,
-        "Category": "Sports",
-        "Quantity": 65,
-        "PaymentMethod": "Both",
-        "ListProduct": true,
-        "id": 7
-      },
-      "quantity": 1
+      "products": []
     }
   ],
+  "localCart": [],
   "userOrders": [
     {
       "id": 1,
@@ -878,6 +805,183 @@
             "id": 6
           },
           "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "userId": 3,
+      "date": "Fri Dec 01 2023",
+      "cartOrder": [
+        {
+          "id": 1,
+          "userId": 3,
+          "cartProduct": {
+            "SellerId": 2,
+            "StoreName": "All in one",
+            "Name": "sport product",
+            "Price": 54,
+            "Category": "Sports",
+            "Quantity": 65,
+            "PaymentMethod": "Both",
+            "ListProduct": true,
+            "id": 7
+          },
+          "quantity": 11
+        },
+        {
+          "id": 2,
+          "userId": 3,
+          "cartProduct": {
+            "SellerId": 2,
+            "StoreName": "All in one",
+            "Name": "sport product",
+            "Price": 54,
+            "Category": "Sports",
+            "Quantity": 65,
+            "PaymentMethod": "Both",
+            "ListProduct": true,
+            "id": 7
+          },
+          "quantity": 1
+        },
+        {
+          "id": 3,
+          "userId": 1,
+          "cartProduct": {
+            "SellerId": 1,
+            "StoreName": "abc",
+            "Name": "rich dad poor dad",
+            "Price": 15,
+            "Category": "Books and Media",
+            "Quantity": 90,
+            "PaymentMethod": "Both",
+            "ListProduct": true,
+            "id": 6
+          },
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "userId": 1,
+      "date": "Fri Dec 01 2023",
+      "cartOrder": [
+        {
+          "id": 1,
+          "userId": 1,
+          "cartProduct": {
+            "SellerId": 1,
+            "StoreName": "abc",
+            "Name": "remote control car",
+            "Price": 15,
+            "Category": "Toys and Games",
+            "Quantity": 54,
+            "PaymentMethod": "Both",
+            "ListProduct": true,
+            "id": 5
+          },
+          "quantity": 1
+        },
+        {
+          "id": 2,
+          "userId": 1,
+          "cartProduct": {
+            "SellerId": 2,
+            "StoreName": "All in one",
+            "Name": "sport shoes",
+            "Price": "54",
+            "Category": "Sports",
+            "Quantity": "54",
+            "PaymentMethod": "Both",
+            "ListProduct": true,
+            "id": 8
+          },
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "date": "Fri Dec 01 2023",
+      "cartOrder": [
+        {
+          "id": 1,
+          "cartProduct": {
+            "SellerId": 2,
+            "StoreName": "All in one",
+            "Name": "sofa",
+            "Price": 54,
+            "Category": "Home and Furniture",
+            "Quantity": 76,
+            "PaymentMethod": "Both",
+            "ListProduct": true,
+            "id": 9
+          },
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "userId": 1,
+      "date": "Fri Dec 01 2023",
+      "cartOrder": [
+        {
+          "id": 1,
+          "userId": 1,
+          "cartProduct": {
+            "SellerId": 2,
+            "StoreName": "All in one",
+            "Name": "sport product",
+            "Price": 54,
+            "Category": "Sports",
+            "Quantity": 65,
+            "PaymentMethod": "Both",
+            "ListProduct": true,
+            "id": 7
+          },
+          "quantity": 1
+        },
+        {
+          "id": 2,
+          "userId": 1,
+          "cartProduct": {
+            "SellerId": 2,
+            "StoreName": "All in one",
+            "Name": "sport shoes",
+            "Price": "54",
+            "Category": "Sports",
+            "Quantity": "54",
+            "PaymentMethod": "Both",
+            "ListProduct": true,
+            "id": 8
+          },
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "userId": 1,
+      "date": "Fri Dec 01 2023",
+      "cartOrder": [
+        {
+          "id": 1,
+          "userId": 1,
+          "cartProduct": {
+            "SellerId": 2,
+            "StoreName": "All in one",
+            "Name": "sofa",
+            "Price": 54,
+            "Category": "Home and Furniture",
+            "Quantity": 76,
+            "PaymentMethod": "Both",
+            "ListProduct": true,
+            "id": 9
+          },
+          "quantity": 1
         }
       ]
     }

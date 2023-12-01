@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
-import {
+import ISellerProduct, {
   IUserCartProduct,
   IUserOrder,
   IUserWishList,
@@ -39,7 +39,7 @@ export class UserService {
   }
 
   userSignUp(data: IUser) {
-    return this.http.post('http://localhost:3000/user', data);
+    return this.http.post<IUser>('http://localhost:3000/user', data);
   }
 
   userDataEmit() {
@@ -165,16 +165,51 @@ export class UserService {
     return this.http.put(`http://localhost:3000/user/${user.id}`, user);
   }
 
+  initialUserWishList(wishList: IUserWishList) {
+    return this.http.post(`http://localhost:3000/wishListOfUsers`, wishList);
+  }
+
   getUserWishlist(userId: number | undefined) {
     return this.http.get<IUserWishList>(
-      `http://localhost:3000/userWishListProducts?userId=${userId}`
+      `http://localhost:3000/wishListOfUsers?userId=${userId}`
     );
   }
 
-  updateUserWishList(userWishList: IUserWishList | undefined) {
-    this.http.put(
-      `localhost:3000/userWishListProducts?userId=${this.user?.id}`,
-      userWishList
-    );
+  addProductInUserWishlist(
+    userId: number | undefined,
+    product: ISellerProduct
+  ) {
+    this.getUserWishlist(userId).subscribe((userWishList: any) => {
+      userWishList[0].products.push(product);
+      this.http
+        .put(
+          `http://localhost:3000/wishListOfUsers/${userWishList[0].id}`,
+          userWishList[0]
+        )
+        .subscribe((res) => {
+          console.log('product added in user wishlist');
+        });
+    });
+  }
+
+  removeProductFromUserWishlist(
+    userId: number | undefined,
+    product: ISellerProduct
+  ) {
+    this.getUserWishlist(userId).subscribe((userWishList: any) => {
+      const arr = userWishList[0].products.filter(
+        (p: ISellerProduct) => p.id != product.id
+      );
+      userWishList[0].products = arr;
+
+      this.http
+        .put(
+          `http://localhost:3000/wishListOfUsers/${userWishList[0].id}`,
+          userWishList[0]
+        )
+        .subscribe((res) => {
+          console.log('product deleted from user wishlist');
+        });
+    });
   }
 }

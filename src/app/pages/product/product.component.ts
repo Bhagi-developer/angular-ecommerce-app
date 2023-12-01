@@ -1,4 +1,10 @@
-import { Component, Input, numberAttribute } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Input,
+  ViewChild,
+  numberAttribute,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import ISellerProduct, {
   IUser,
@@ -22,6 +28,7 @@ export class ProductComponent {
   quantity: number = 1;
   productWishListed: boolean = false;
   userWishList: IUserWishList | undefined = undefined;
+  @ViewChild('favoriteIcon') favoriteIcon!: ElementRef;
 
   constructor(
     private router: Router,
@@ -45,10 +52,31 @@ export class ProductComponent {
     this.userService.userDataEmitter.subscribe((res) => {
       this.user = res;
 
+      //fetching user wishlist
       this.userService
         .getUserWishlist(this.user?.id)
-        .subscribe((userWishList) => {
-          this.userWishList = userWishList;
+        .subscribe((resUserWishList: any) => {
+          this.userWishList = resUserWishList[0];
+
+          this.userWishList?.products.forEach((p) => {
+            if (this.product != null) {
+              if (this.product.id == p.id) {
+                this.productWishListed = true;
+              }
+            } else {
+              if (this.productParam?.cartProduct.id == p.id) {
+                this.productWishListed = true;
+              }
+            }
+          });
+
+          if (this.productWishListed) {
+            this.favoriteIcon.nativeElement.classList.remove('white-color');
+            this.favoriteIcon.nativeElement.classList.add('pink-color');
+          } else {
+            this.favoriteIcon.nativeElement.classList.remove('pink-color');
+            this.favoriteIcon.nativeElement.classList.add('pink-color');
+          }
         });
     });
   }
@@ -80,27 +108,43 @@ export class ProductComponent {
     });
   }
 
-  handleProductWishlist(e: Event) {
+  handleWishListProduct(e: Event) {
     const wishListIcon = e.currentTarget as HTMLElement;
 
     if (this.productWishListed) {
+      //remove from wishlist
       wishListIcon.classList.add('white-color');
       wishListIcon.classList.remove('pink-color');
 
-      if (this.userWishList?.products) {
-        this.userWishList.products = this.userWishList?.products.filter(
-          (p) => p.id != this.product?.id
+      if (this.product != null) {
+        this.userService.removeProductFromUserWishlist(
+          this.user?.id,
+          this.product
         );
+      } else {
+        if (this.productParam != null) {
+          this.userService.removeProductFromUserWishlist(
+            this.user?.id,
+            this.productParam.cartProduct
+          );
+        }
       }
     } else {
+      //add in wishlist
       wishListIcon.classList.add('pink-color');
       wishListIcon.classList.remove('white-color');
-      if (this.product) {
-        this.userWishList?.products?.push(this.product);
+
+      if (this.product != null) {
+        this.userService.addProductInUserWishlist(this.user?.id, this.product);
+      } else {
+        if (this.productParam != null) {
+          this.userService.addProductInUserWishlist(
+            this.user?.id,
+            this.productParam.cartProduct
+          );
+        }
       }
     }
-
-    this.userService.updateUserWishList(this.userWishList);
     this.productWishListed = !this.productWishListed;
   }
 }

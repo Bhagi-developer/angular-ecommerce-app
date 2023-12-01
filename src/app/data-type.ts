@@ -7,9 +7,9 @@ export interface IUser {
 }
 
 export interface IUserWishList {
-  id: number;
+  id: number | null;
   userId: number;
-  products: ISellerProduct[] | null;
+  products: ISellerProduct[];
 }
 
 export interface IsellerDataType {

@@ -5,7 +5,8 @@
       *ngSwitchCase="true" />
 
     <div class="wishlist-action-container">
-      <i class="material-icons favorite-icon white-color" (click)="handleProductWishlist($event)">favorite</i>
+      <i #favoriteIcon class="material-icons favorite-icon white-color"
+        (click)="handleWishListProduct($event)">favorite</i>
     </div>
 
   </div>

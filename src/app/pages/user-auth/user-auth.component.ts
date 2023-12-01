@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
-import { IUser } from 'src/app/data-type';
+import { IUser, IUserWishList } from 'src/app/data-type';
 
 @Component({
   selector: 'app-user-auth',
@@ -35,11 +35,21 @@ export class UserAuthComponent {
       } else {
         if (this.passwordPattern.test(form.value.Password)) {
           this.weakPasswordWarn = false;
-          this.userService.userSignUp(form.value).subscribe((res) => {
+          this.userService.userSignUp(form.value).subscribe((res: IUser) => {
             if (res) {
               form.reset();
               this.loginPage = true;
             }
+            const userWishList: IUserWishList = {
+              id: null,
+              userId: res.id,
+              products: [],
+            };
+            this.userService
+              .initialUserWishList(userWishList)
+              .subscribe((res) => {
+                //initial user wishlist created
+              });
           });
         } else {
           this.weakPasswordWarn = true;
