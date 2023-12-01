@@ -78,7 +78,7 @@
       "Category": "Home and Furniture",
       "Quantity": "76",
       "PaymentMethod": "Both",
-      "ListProduct": true,
+      "ListProduct": false,
       "id": 9
     },
     {
@@ -144,7 +144,40 @@
       "products": []
     }
   ],
-  "localCart": [],
+  "localCart": [
+    {
+      "id": 1,
+      "userId": 1,
+      "cartProduct": {
+        "SellerId": 1,
+        "StoreName": "abc",
+        "Name": "remote control car",
+        "Price": 15,
+        "Category": "Toys and Games",
+        "Quantity": 54,
+        "PaymentMethod": "Both",
+        "ListProduct": true,
+        "id": 5
+      },
+      "quantity": 1
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "cartProduct": {
+        "SellerId": 2,
+        "StoreName": "All in one",
+        "Name": "sofa",
+        "Price": "54",
+        "Category": "Home and Furniture",
+        "Quantity": "76",
+        "PaymentMethod": "Both",
+        "ListProduct": true,
+        "id": 9
+      },
+      "quantity": 5
+    }
+  ],
   "userOrders": [
     {
       "id": 1,
@@ -1059,6 +1092,29 @@
             "id": 7
           },
           "quantity": 5
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "userId": 1,
+      "date": "Fri Dec 01 2023",
+      "cartOrder": [
+        {
+          "id": 1,
+          "userId": 1,
+          "cartProduct": {
+            "SellerId": 2,
+            "StoreName": "All in one",
+            "Name": "sofa",
+            "Price": "54",
+            "Category": "Home and Furniture",
+            "Quantity": "76",
+            "PaymentMethod": "Both",
+            "ListProduct": false,
+            "id": 9
+          },
+          "quantity": 1
         }
       ]
     }

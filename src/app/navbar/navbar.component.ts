@@ -25,7 +25,7 @@ export class NavbarComponent implements OnInit {
     private sellerService: SellerService,
     private productService: ProductService,
     private userService: UserService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.router.events
@@ -78,7 +78,7 @@ export class NavbarComponent implements OnInit {
   }
 
   navigateUserProfile() {
-    this.router.navigate(['/user-profile'])
+    this.router.navigate(['/user-profile']);
   }
 
   searchSuggetionTrigger(event: Event) {
@@ -95,7 +95,9 @@ export class NavbarComponent implements OnInit {
       this.productService
         .getSuggestedProducts(element.value.trim())
         .subscribe((res) => {
-          this.searchSuggetionProducts = res;
+          this.searchSuggetionProducts = res.filter((p) => {
+            return p.ListProduct;
+          });
         });
     }
   }

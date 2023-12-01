@@ -18,9 +18,9 @@ export class SellerStoreComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private router:Router,
+    private router: Router,
     private productService: ProductService,
-    private userService:UserService,
+    private userService: UserService,
     private _snackBar: MatSnackBar
   ) {}
 
@@ -33,11 +33,13 @@ export class SellerStoreComponent {
     this.productService
       .sellerGetProductsById(this.sellerId)
       .subscribe((res) => {
-        this.storeProducts = res;
+        this.storeProducts = res.filter((p) => {
+          return p.ListProduct;
+        });
       });
   }
 
-  isUserAuthenticated(){
+  isUserAuthenticated() {
     return UserService.isUserAuthenticated;
   }
 
@@ -47,7 +49,7 @@ export class SellerStoreComponent {
 
   addToCart(product: ISellerProduct) {
     const data: IUserCartProduct = {
-      id:null,
+      id: null,
       userId: this.user?.id,
       cartProduct: product,
       quantity: this.quantity,
