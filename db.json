@@ -41,9 +41,9 @@
       "SellerId": 1,
       "StoreName": "abc",
       "Name": "rich dad poor dad",
-      "Price": 15,
+      "Price": "15",
       "Category": "Books and Media",
-      "Quantity": 90,
+      "Quantity": "90",
       "PaymentMethod": "Both",
       "ListProduct": true,
       "id": 6
@@ -63,9 +63,9 @@
       "SellerId": 2,
       "StoreName": "All in one",
       "Name": "sport shoes",
-      "Price": "54",
+      "Price": 64,
       "Category": "Sports",
-      "Quantity": "54",
+      "Quantity": "64",
       "PaymentMethod": "Both",
       "ListProduct": true,
       "id": 8
@@ -74,9 +74,9 @@
       "SellerId": 2,
       "StoreName": "All in one",
       "Name": "sofa",
-      "Price": 54,
+      "Price": "54",
       "Category": "Home and Furniture",
-      "Quantity": 76,
+      "Quantity": "76",
       "PaymentMethod": "Both",
       "ListProduct": true,
       "id": 9
@@ -100,7 +100,7 @@
       "Category": "Books and Media",
       "Quantity": "110",
       "PaymentMethod": "Both",
-      "ListProduct": false,
+      "ListProduct": true,
       "id": 11
     }
   ],

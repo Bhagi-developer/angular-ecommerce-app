@@ -14,7 +14,18 @@ import { SellerService } from 'src/app/services/seller.service';
   styleUrls: ['./seller-update-product.component.css'],
 })
 export class SellerUpdateProductComponent {
-  product: ISellerProduct | null = null;
+  product: ISellerProduct = {
+    id: 0,
+    Name: '',
+    Price: 0,
+    Category: '',
+    PaymentMethod: '',
+    Quantity: 0,
+    StoreName: '',
+    SellerId: 0,
+    ListProduct: false, // Initialize ListProduct as needed
+  };
+
   invalidSubmission: boolean = false;
   updateProductSuccess: boolean = false;
 
