@@ -58,10 +58,11 @@ export class UserService {
       )
       .subscribe((response: any) => {
         if (response?.body?.length) {
-          localStorage.setItem('user', JSON.stringify(response.body[0]));
+          let { Password, ...userData } = response.body[0];
+          localStorage.setItem('user', JSON.stringify(userData));
           UserService.isUserAuthenticated = true;
           this.router.navigate(['/']);
-          this.userDataSubject.next(response.body[0]);
+          this.userDataSubject.next(userData);
         } else {
           this.isloginError.emit(true);
         }
