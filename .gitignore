@@ -6,6 +6,9 @@
 /out-tsc
 /bazel-out
 
+# Ignore db.json file
+/db.json
+
 # Node
 /node_modules
 npm-debug.log
