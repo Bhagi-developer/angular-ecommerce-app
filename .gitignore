@@ -6,8 +6,8 @@
 /out-tsc
 /bazel-out
 
-# Ignore db.json file
-/db.json
+# ignore db.json
+db.json
 
 # Node
 /node_modules
